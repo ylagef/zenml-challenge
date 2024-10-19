@@ -2,7 +2,7 @@ import { ThemeToggle } from './ThemeToggle'
 
 export const Header = () => {
   return (
-    <header className="flex justify-end p-4">
+    <header className="fixed top-0 flex w-full justify-end p-4">
       <ThemeToggle />
     </header>
   )

@@ -17,10 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased">
+      <body className="flex h-screen flex-col antialiased">
         <ThemeProvider attribute="data-theme" defaultTheme="dark">
           <Header />
-          <main>{children}</main>
+          <main className="flex flex-1">{children}</main>
         </ThemeProvider>
       </body>
     </html>
