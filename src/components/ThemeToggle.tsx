@@ -1,10 +1,10 @@
 'use client'
 
-import { useTheme } from 'next-themes'
-import React, { use, useEffect, useState } from 'react'
-import { Sun } from '@/components/icons/Sun'
 import { Moon } from '@/components/icons/Moon'
-import { Spinner } from '../icons/Spinner'
+import { Spinner } from '@/components/icons/Spinner'
+import { Sun } from '@/components/icons/Sun'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 enum THEME {
   LIGHT = 'light',

@@ -1,4 +1,4 @@
-import { cn } from '@/utils/tailwind'
+import { cn } from '@/lib/utils'
 import React from 'react'
 
 export const Spinner = ({ className }: { className?: string }) => {

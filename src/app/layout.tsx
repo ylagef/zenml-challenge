@@ -1,9 +1,11 @@
+import { ThemeProvider } from '@/contexts/ThemeProvider'
+
+import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
-
-import { Header } from '@/components/Header'
-import { ThemeProvider } from '@/contexts/ThemeProvider'
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'ZenML Challenge - Yeray',
@@ -17,10 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex h-screen flex-col antialiased">
+      <body className={cn('mx-auto flex h-screen flex-col antialiased', inter.className)}>
         <ThemeProvider attribute="data-theme" defaultTheme="dark">
-          <Header />
-          <main className="flex flex-1">{children}</main>
+          {children}
         </ThemeProvider>
       </body>
     </html>
