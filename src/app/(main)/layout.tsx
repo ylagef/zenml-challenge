@@ -7,7 +7,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
     <SidebarProvider>
       <AppSidebar />
 
-      <main className="flex flex-1 p-4">{children}</main>
+      <main className="flex flex-1 border border-red-300 p-4">{children}</main>
     </SidebarProvider>
   )
 }
