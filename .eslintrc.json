@@ -1,3 +1,17 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript", "standard", "prettier", "plugin:@tanstack/query/recommended"],
+  "plugins": ["simple-import-sort"],
+  "rules": {
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error",
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-undef": "warn",
+    "no-unused-vars": "warn"
+  }
 }
