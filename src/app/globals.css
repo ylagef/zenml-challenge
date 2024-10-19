@@ -5,19 +5,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --bg-pattern: url('/bg-pattern-light.svg');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root[data-theme='dark'] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --bg-pattern: url('/bg-pattern-dark.svg');
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: 'Inter', sans-serif, system-ui;
+  font-family: Arial, Helvetica, sans-serif;
+
+  background-color: var(--background);
+  background-image: var(--bg-pattern);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 @layer utilities {
