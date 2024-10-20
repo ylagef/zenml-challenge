@@ -5,11 +5,11 @@ import { Link } from 'next-view-transitions'
 export default function Home() {
   return (
     <>
-      <main className="flex flex-1 flex-col">
-        <Link className="flex grow flex-col items-center justify-center px-4 pt-4" href="/stacks">
+      <main className="flex flex-col flex-1">
+        <Link className="flex flex-col items-center justify-center px-4 pt-4 grow" href="/stacks">
           <h1 className="text-xl">WELCOME TO</h1>
           <h2
-            className="text-center text-4xl font-bold md:text-7xl"
+            className="text-4xl font-bold text-center md:text-7xl"
             style={{
               viewTransitionName: 'stack-builder'
             }}
@@ -22,7 +22,7 @@ export default function Home() {
         </Link>
       </main>
 
-      <footer className="flex justify-center py-2">
+      <footer className="flex justify-center py-4">
         <ThemeToggle />
       </footer>
 
