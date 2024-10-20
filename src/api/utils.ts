@@ -1,4 +1,4 @@
-export const fetchRequest = async (slug: string, options: RequestInit = {}) => {
+export const fetchRequest = async <T extends unknown>(slug: string, options: RequestInit = {}) => {
   const url = `${process.env.API_URL}/${slug}`
   console.log(url)
   const response = await fetch(url, {
@@ -12,5 +12,5 @@ export const fetchRequest = async (slug: string, options: RequestInit = {}) => {
     throw new Error(response.statusText)
   }
 
-  return response.json()
+  return response.json() as Promise<T>
 }

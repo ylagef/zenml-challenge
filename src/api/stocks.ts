@@ -1,15 +1,10 @@
+import { Stack } from '@/types/stack'
 import { fetchRequest } from './utils'
 
 const SLUG = 'stacks'
 
 export const getStacks = async () => {
-  await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(undefined)
-    }, 2000)
-  })
-
-  const stacks = await fetchRequest(SLUG)
+  const stacks = await fetchRequest<Stack[]>(SLUG)
   console.log(stacks)
   return stacks
 }
