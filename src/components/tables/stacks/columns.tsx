@@ -2,7 +2,7 @@
 
 import { Stack } from '@/types/stack'
 import { ColumnDef } from '@tanstack/react-table'
-import { SortableHeader } from '../utils'
+import { BooleanCell, SortableHeader } from '../utils'
 
 export const columns: ColumnDef<Stack>[] = [
   {
@@ -11,20 +11,19 @@ export const columns: ColumnDef<Stack>[] = [
   },
   {
     accessorKey: 'name',
-
-    header: ({ column }) => SortableHeader<Stack>('Name', column)
+    header: ({ column }) => SortableHeader<Stack>({ title: 'Name', column })
   },
   {
     accessorKey: 'created',
-    header: ({ column }) => SortableHeader<Stack>('Created at', column)
+    header: ({ column }) => SortableHeader<Stack>({ title: 'Created at', column })
   },
   {
     accessorKey: 'updated',
-    header: ({ column }) => SortableHeader<Stack>('Updated at', column)
+    header: ({ column }) => SortableHeader<Stack>({ title: 'Updated at', column })
   },
   {
-    accessorKey: 'isShared',
-    header: ({ column }) => SortableHeader<Stack>('Shared', column),
-    cell: ({ row }) => (row.original.is_shared ? 'Yes' : 'No')
+    accessorKey: 'is_shared',
+    header: ({ column }) => SortableHeader<Stack>({ title: 'Shared', column }),
+    cell: ({ row }) => <BooleanCell value={row.original.is_shared} />
   }
 ]
