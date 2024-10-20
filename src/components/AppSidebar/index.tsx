@@ -1,22 +1,22 @@
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarTrigger
-} from '@/components/ui/sidebar'
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu } from '@/components/ui/sidebar'
 import { ROUTES } from '@/utils/routes'
 import { ThemeToggle } from '../ThemeToggle'
 import { MenuItem } from './MenuItem'
+import { Link } from 'next-view-transitions'
 
 export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <h1 className="font-bold">Stacks builder</h1>
+        <Link
+          href="/"
+          className="font-bold"
+          style={{
+            viewTransitionName: 'stack-builder'
+          }}
+        >
+          Stacks builder
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -30,11 +30,8 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter>
-        <div className="flex w-full justify-between p-2">
-          <ThemeToggle />
-          <SidebarTrigger />
-        </div>
+      <SidebarFooter className="flex w-full justify-center p-2">
+        <ThemeToggle />
       </SidebarFooter>
     </Sidebar>
   )

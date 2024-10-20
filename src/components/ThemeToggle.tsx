@@ -24,5 +24,9 @@ export const ThemeToggle = () => {
 
   if (!selectedTheme) return <Spinner className="aspect-square h-6" />
 
-  return <button onClick={toggleTheme}>{theme === THEME.LIGHT ? <Moon /> : <Sun />}</button>
+  return (
+    <button className="flex justify-center" onClick={toggleTheme}>
+      {theme === THEME.LIGHT ? <Moon /> : <Sun />}
+    </button>
+  )
 }

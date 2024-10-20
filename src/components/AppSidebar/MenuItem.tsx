@@ -3,8 +3,9 @@
 import { Route } from '@/utils/routes'
 import React from 'react'
 import { SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
-import Link from 'next/link'
+
 import { usePathname } from 'next/navigation'
+import { Link } from 'next-view-transitions'
 
 export const MenuItem = ({ route }: { route: Route }) => {
   const pathName = usePathname()

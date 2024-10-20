@@ -1,5 +1,5 @@
 import { AppSidebar } from '@/components/AppSidebar'
-import { SidebarProvider } from '@/components/ui/sidebar'
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { PropsWithChildren } from 'react'
 
 export default function MainLayout({ children }: PropsWithChildren) {
@@ -7,7 +7,13 @@ export default function MainLayout({ children }: PropsWithChildren) {
     <SidebarProvider>
       <AppSidebar />
 
-      <main className="flex flex-1 border border-red-300 p-4">{children}</main>
+      <div className="flex flex-1 flex-col">
+        <main className="flex flex-1 p-4">{children}</main>
+
+        <footer className="p-2">
+          <SidebarTrigger />
+        </footer>
+      </div>
     </SidebarProvider>
   )
 }
