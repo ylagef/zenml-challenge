@@ -12,7 +12,7 @@ export const KeyCallbackListener = ({ keys, callback, ctrlCmd }: KeyCallbackList
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const needsCtrlCmd = ctrlCmd ? e.ctrlKey || e.metaKey : true
-      console.log(keys, e.key, needsCtrlCmd)
+
       if (keys.includes(e.key) && needsCtrlCmd) {
         e.preventDefault()
         callback()
@@ -24,7 +24,7 @@ export const KeyCallbackListener = ({ keys, callback, ctrlCmd }: KeyCallbackList
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [])
+  }, [callback])
 
   return null
 }
