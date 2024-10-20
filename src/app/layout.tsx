@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
-        <body className={cn('mx-auto flex h-screen flex-col antialiased', inter.className)}>
+        <body className={cn('mx-auto flex h-dvh flex-col antialiased', inter.className)}>
           <ThemeProvider attribute="data-theme" defaultTheme="dark">
             {children}
           </ThemeProvider>
