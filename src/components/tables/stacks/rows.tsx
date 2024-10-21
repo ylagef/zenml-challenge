@@ -54,7 +54,7 @@ export function StackComponentsTable({ columns, data }: DataTableProps) {
           placeholder="Filter..."
           value={table.getState().globalFilter}
           onChange={(e) => table.setGlobalFilter(String(e.target.value))}
-          className="max-w-sm bg-background/50"
+          className="w-full max-w-sm bg-background/50"
         />
       </div>
 

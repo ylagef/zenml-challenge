@@ -44,29 +44,27 @@ export const columns: ColumnDef<Stack>[] = [
     accessorKey: 'components',
     header: ({ column }) => SortableHeader<Stack>({ title: 'Components', column }),
     cell: ({ row }) => (
-      <Button variant="ghost" asChild>
-        <Link href={`/stack-components?stack=${row.original.id}`} className="flex gap-2">
-          {Object.keys(row.original.components).length}
-          <Filter size={16} />
-        </Link>
-      </Button>
+      <div className="flex gap-2">
+        <Button variant="ghost" asChild>
+          <Link href={`/stack-components?stack=${row.original.id}`} className="flex gap-2">
+            <Filter size={16} />
+          </Link>
+        </Button>
+        <Button variant="ghost" onClick={row.getToggleExpandedHandler()}>
+          <MoveDown size={16} className={cn(row.getIsExpanded() && 'rotate-180')} />
+        </Button>
+      </div>
     )
   },
   {
     accessorKey: 'actions',
     header: '',
     cell: ({ row }) => (
-      <div className="flex">
-        <Button variant="ghost" onClick={row.getToggleExpandedHandler()}>
-          <MoveDown size={16} className={cn(row.getIsExpanded() && 'rotate-180')} />
-        </Button>
-
-        <Button variant="ghost" asChild>
-          <Link href={`/stacks/${row.original.id}`}>
-            <MoveRight size={16} />
-          </Link>
-        </Button>
-      </div>
+      <Button variant="ghost" asChild>
+        <Link href={`/stacks/${row.original.id}`}>
+          <MoveRight size={16} />
+        </Link>
+      </Button>
     )
   }
 ]
