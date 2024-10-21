@@ -62,6 +62,7 @@ body {
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   :root[data-theme='dark'] {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -96,13 +97,163 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer stack-components {
+  .orchestrator {
+    --border: 220 60% 85%; /* Soft blue to match primary accents */
+    --background: 220 100% 97%; /* Very light blue */
+    --foreground: 220 100% 30%; /* Darker blue for text contrast */
+  }
+  .artifact_store {
+    --border: 140 50% 80%; /* Soft green for a natural touch */
+    --background: 140 100% 94%; /* Light green */
+    --foreground: 140 100% 25%; /* Darker green for text */
+  }
+  .container_registry {
+    --border: 200 70% 80%; /* Soft cyan for the border */
+    --background: 200 100% 95%; /* Light cyan for the background */
+    --foreground: 200 100% 30%; /* Dark cyan for the text */
+  }
+
+  .data_validator {
+    --border: 40 70% 80%; /* Soft yellow for the border */
+    --background: 40 100% 94%; /* Light yellow */
+    --foreground: 40 100% 25%; /* Darker yellow for the text */
+  }
+
+  .experiment_tracker {
+    --border: 290 60% 85%; /* Soft purple for the border */
+    --background: 290 100% 97%; /* Very light purple */
+    --foreground: 290 100% 30%; /* Dark purple for the text */
+  }
+
+  .model_deployer {
+    --border: 10 80% 85%; /* Soft orange for the border */
+    --background: 10 100% 95%; /* Light orange */
+    --foreground: 10 100% 30%; /* Dark orange for the text */
+  }
+
+  .step_operator {
+    --border: 180 60% 80%; /* Soft teal for the border */
+    --background: 180 100% 95%; /* Light teal */
+    --foreground: 180 100% 30%; /* Dark teal for the text */
+  }
+
+  .alerter {
+    --border: 350 70% 80%; /* Soft pink for the border */
+    --background: 350 100% 95%; /* Light pink */
+    --foreground: 350 100% 30%; /* Dark pink for the text */
+  }
+
+  .image_builder {
+    --border: 50 70% 80%; /* Soft yellow-green for the border */
+    --background: 50 100% 95%; /* Light yellow-green */
+    --foreground: 50 100% 30%; /* Dark yellow-green for the text */
+  }
+
+  .annotator {
+    --border: 290 60% 80%; /* Soft magenta for the border */
+    --background: 290 100% 95%; /* Light magenta */
+    --foreground: 290 100% 30%; /* Dark magenta for the text */
+  }
+
+  .model_registry {
+    --border: 210 60% 80%; /* Soft blue for the border */
+    --background: 210 100% 95%; /* Light blue */
+    --foreground: 210 100% 30%; /* Dark blue for the text */
+  }
+
+  .feature_store {
+    --border: 140 60% 80%; /* Soft green for the border */
+    --background: 140 100% 95%; /* Light green */
+    --foreground: 140 100% 30%; /* Dark green for the text */
+  }
+  .secrets_manager {
+    --border: 190 60% 70%; /* Soft aqua for the border */
+    --background: 190 100% 92%; /* Light aqua */
+    --foreground: 190 100% 30%; /* Dark aqua for the text */
+  }
+
+  :root[data-theme='dark'] .orchestrator {
+    --border: 220 60% 50%; /* Medium blue for borders */
+    --background: 220 60% 15%; /* Dark blue for background */
+    --foreground: 220 100% 85%; /* Light blue for text */
+  }
+  :root[data-theme='dark'] .artifact_store {
+    --border: 140 50% 45%; /* Darker green for borders */
+    --background: 140 50% 15%; /* Dark green for background */
+    --foreground: 140 100% 85%; /* Light green for text */
+  }
+  :root[data-theme='dark'] .container_registry {
+    --border: 200 60% 50%; /* Medium cyan */
+    --background: 200 60% 15%; /* Dark cyan */
+    --foreground: 200 100% 85%; /* Light cyan */
+  }
+
+  :root[data-theme='dark'] .data_validator {
+    --border: 40 60% 50%; /* Medium yellow */
+    --background: 40 60% 15%; /* Dark yellow */
+    --foreground: 40 100% 85%; /* Light yellow */
+  }
+
+  :root[data-theme='dark'] .experiment_tracker {
+    --border: 290 60% 50%; /* Medium purple */
+    --background: 290 60% 15%; /* Dark purple */
+    --foreground: 290 100% 85%; /* Light purple */
+  }
+
+  :root[data-theme='dark'] .model_deployer {
+    --border: 10 80% 50%; /* Medium orange */
+    --background: 10 80% 15%; /* Dark orange */
+    --foreground: 10 100% 85%; /* Light orange */
+  }
+
+  :root[data-theme='dark'] .step_operator {
+    --border: 180 60% 50%; /* Medium teal */
+    --background: 180 60% 15%; /* Dark teal */
+    --foreground: 180 100% 85%; /* Light teal */
+  }
+
+  :root[data-theme='dark'] .alerter {
+    --border: 350 60% 50%; /* Medium pink */
+    --background: 350 60% 15%; /* Dark pink */
+    --foreground: 350 100% 85%; /* Light pink */
+  }
+
+  :root[data-theme='dark'] .image_builder {
+    --border: 50 60% 50%; /* Medium yellow-green */
+    --background: 50 60% 15%; /* Dark yellow-green */
+    --foreground: 50 100% 85%; /* Light yellow-green */
+  }
+
+  :root[data-theme='dark'] .annotator {
+    --border: 290 60% 50%; /* Medium magenta */
+    --background: 290 60% 15%; /* Dark magenta */
+    --foreground: 290 100% 85%; /* Light magenta */
+  }
+
+  :root[data-theme='dark'] .model_registry {
+    --border: 210 60% 50%; /* Medium blue */
+    --background: 210 60% 15%; /* Dark blue */
+    --foreground: 210 100% 85%; /* Light blue */
+  }
+
+  :root[data-theme='dark'] .feature_store {
+    --border: 140 60% 50%; /* Medium green */
+    --background: 140 60% 15%; /* Dark green */
+    --foreground: 140 100% 85%; /* Light green */
+  }
+  :root[data-theme='dark'] .secrets_manager {
+    --border: 190 60% 50%; /* Medium aqua */
+    --background: 190 60% 20%; /* Dark aqua */
+    --foreground: 190 100% 80%; /* Light aqua */
   }
 }

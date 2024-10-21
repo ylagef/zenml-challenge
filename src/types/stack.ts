@@ -1,3 +1,5 @@
+import { STACK_COMPONENT_TYPE } from './stack-component'
+
 export type Stack = {
   id: string
   created: string
@@ -7,5 +9,5 @@ export type Stack = {
   is_shared: boolean
   name: string
   description: string
-  components: Record<string, unknown>
+  components: Record<STACK_COMPONENT_TYPE, string[]>
 }
