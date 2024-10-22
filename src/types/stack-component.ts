@@ -14,10 +14,6 @@ export enum STACK_COMPONENT_TYPE {
   SECRETS_MANAGER = 'secrets_manager'
 }
 
-export enum STACK_COMPONENT_FLAVOR {
-  KUBEFLOW = 'kubeflow'
-}
-
 export interface StackComponent {
   id: string
   created: string
@@ -27,6 +23,6 @@ export interface StackComponent {
   is_shared: boolean
   name: string
   type: STACK_COMPONENT_TYPE
-  flavor: STACK_COMPONENT_FLAVOR
+  flavor: string
   configuration: Record<string, unknown>
 }

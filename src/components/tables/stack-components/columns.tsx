@@ -7,6 +7,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { ExternalLink, Eye, EyeOff, Filter } from 'lucide-react'
 import { Link } from 'next-view-transitions'
 import { BooleanCell, formatDate, SortableHeader } from '../utils'
+import { cn } from '@/lib/utils'
 
 export const columns: ColumnDef<StackComponent>[] = [
   {
@@ -19,7 +20,12 @@ export const columns: ColumnDef<StackComponent>[] = [
   },
   {
     accessorKey: 'type',
-    header: ({ column }) => SortableHeader<StackComponent>({ title: 'Type', column })
+    header: ({ column }) => SortableHeader<StackComponent>({ title: 'Type', column }),
+    cell: ({ row }) => <span className={cn('rounded-full border bg-background px-2 py-1 text-xs', row.original.type)}>{row.original.type}</span>
+  },
+  {
+    accessorKey: 'flavor',
+    header: ({ column }) => SortableHeader<StackComponent>({ title: 'Flavor', column })
   },
   {
     accessorKey: 'created',
