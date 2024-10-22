@@ -2,6 +2,7 @@ import { getStackComponents } from '@/api/stack-components'
 import { getStacks } from '@/api/stacks'
 import { FiltersBar } from '@/components/FiltersBar'
 import { StackCard } from '@/components/StackCard'
+import { StackComponent } from '@/components/StackCard/StackComponent'
 import { StackComponentCard } from '@/components/StackComponentCard'
 import { columns } from '@/components/tables/stack-components/columns'
 import { Table } from '@/components/tables/Table'
@@ -26,7 +27,7 @@ export default async function StackComponentsPage({ searchParams: { view, text =
   })
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className="flex flex-1 flex-col">
       <div className="flex justify-between gap-1 py-2">
         <FiltersBar />
 
@@ -48,8 +49,8 @@ export default async function StackComponentsPage({ searchParams: { view, text =
         <Table columns={columns} data={filteredStackComponents} />
       ) : (
         <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-          {filteredStackComponents.map((stack) => (
-            <StackComponentCard key={stack.id} type={stack.type} id={stack.id} />
+          {filteredStackComponents.map((stackComponent) => (
+            <StackComponentCard key={stackComponent.id} component={stackComponent} />
           ))}
         </div>
       )}

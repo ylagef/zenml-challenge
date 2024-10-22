@@ -1,27 +1,67 @@
 import { cn } from '@/lib/utils'
-import { Button } from './ui/button'
+import { StackComponent } from '@/types/stack-component'
+import React from 'react'
+import { formatDate } from './tables/utils'
+import { Badge } from './ui/badge'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Link } from 'next-view-transitions'
+import { Ellipsis } from 'lucide-react'
+import { Separator } from './ui/separator'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { materialDark, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { ExpandableCode } from './ExpandableCode'
 
-export const StackComponentCard = ({ type, id }: { type: string; id: string }) => {
+export const StackComponentCard = ({ component }: { component: StackComponent }) => {
+  const { name, id, type, flavor, configuration, created, updated, is_shared } = component
   return (
-    <Button
-      className={cn('flex h-16 flex-1 flex-col items-center gap-1 border bg-background px-4 py-2 text-foreground hover:bg-border/50', type)}
-      asChild
-    >
-      <Link href={`/stack-components/${id}`}>
-        <span
-          className="font-bold"
+    <article className="flex flex-col overflow-hidden border rounded-md h-fit bg-background">
+      <div className="flex justify-between w-full p-3">
+        <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
-        >
-          {type}
-        </span>
-        <span
-          className="text-xs"
+        <span className={cn('w-fit rounded-full border bg-background px-3 py-1 text-center text-sm', type)}>{type}</span>
 
-        >
-          {id}
-        </span>
-      </Link>
-    </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Ellipsis size={24} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem>
+              <Link href={`/stack-components/${id}`}>View detail</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>Update</DropdownMenuItem>
+            <DropdownMenuItem className="text-red-800">Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
+      <div className="flex flex-col gap-2 px-2">
+        <div className="flex flex-col w-full p-2">
+          <h3 className="mb-2 font-bold break-all text-md">{name}</h3>
+          <label className="text-sm">
+            <span className="font-bold">ID: </span>
+            {id}
+          </label>
+          <label className="text-sm">
+            <span className="font-bold">Flavor: </span>
+            {flavor}
+          </label>
+          <label className="text-sm">
+            <span className="font-bold">Created at: </span>
+            {formatDate(created)}
+          </label>
+          <label className="text-sm">
+            <span className="font-bold">Updated at: </span>
+            {formatDate(updated)}
+          </label>
+        </div>
+
+        <Separator />
+
+        <div className="flex flex-col gap-2 px-2 pb-4">
+          <label className="text-sm font-bold">Configuration:</label>
+          <ExpandableCode code={configuration} />
+        </div>
+      </div>
+    </article>
   )
 }
