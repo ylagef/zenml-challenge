@@ -1,6 +1,5 @@
 import { getStackById } from '@/api/stacks'
 import { StackCard } from '@/components/StackCard'
-import { StackComponentCard } from '@/components/StackComponentCard'
 
 export default async function StackDetailPage({ params: { id } }: { params: { id: string } }) {
   const stack = await getStackById(id)

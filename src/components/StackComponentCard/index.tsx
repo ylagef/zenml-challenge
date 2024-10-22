@@ -3,16 +3,17 @@ import { StackComponent } from '@/types/stack-component'
 import { Ellipsis } from 'lucide-react'
 import { Link } from 'next-view-transitions'
 import { ExpandableCode } from './ExpandableCode'
-import { formatDate } from './tables/utils'
-import { Badge } from './ui/badge'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { Separator } from './ui/separator'
+import { formatDate } from '../tables/utils'
+import { Badge } from '../ui/badge'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu'
+import { Separator } from '../ui/separator'
+import { BaseCard } from '../BaseCard'
 
 export const StackComponentCard = ({ component }: { component: StackComponent }) => {
   const { name, id, type, flavor, project, configuration, created, updated, is_shared } = component
   return (
-    <article className="flex flex-col overflow-hidden border rounded-md h-fit bg-background">
-      <div className="flex justify-between w-full p-3">
+    <BaseCard>
+      <div className="flex justify-between w-full px-2 pt-2">
         <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
         <span className={cn('w-fit rounded-full border bg-background px-3 py-1 text-center text-sm', type)}>{type}</span>
@@ -31,7 +32,7 @@ export const StackComponentCard = ({ component }: { component: StackComponent })
         </DropdownMenu>
       </div>
 
-      <div className="flex flex-col gap-2 px-2">
+      <div className="flex flex-col w-full gap-2 px-2">
         <div className="flex flex-col w-full gap-1 p-2">
           <h3 className="mb-2 font-bold break-all text-md">{name}</h3>
           <label className="text-sm">
@@ -63,6 +64,6 @@ export const StackComponentCard = ({ component }: { component: StackComponent })
           <ExpandableCode code={configuration} />
         </div>
       </div>
-    </article>
+    </BaseCard>
   )
 }

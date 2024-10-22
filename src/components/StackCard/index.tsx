@@ -17,13 +17,14 @@ import {
 import { Link } from 'next-view-transitions'
 import { Badge } from '../ui/badge'
 import { cn } from '@/lib/utils'
+import { BaseCard } from '../BaseCard'
 
 export const StackCard = ({ stack }: { stack: Stack }) => {
   const { id, description, name, created, updated, components, is_shared } = stack
   const { mainComponents, otherComponents } = splitComponents(components)
 
   return (
-    <article className="flex flex-col items-center max-w-full gap-3 p-2 border rounded-md h-fit bg-background text-foreground">
+    <BaseCard>
       <div className="flex justify-between w-full px-2 pt-2">
         <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
@@ -74,6 +75,6 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
       <OtherComponents components={otherComponents} />
 
       <AddComponentButton />
-    </article>
+    </BaseCard>
   )
 }
