@@ -1,32 +1,19 @@
 'use client'
 
-import {
-  ColumnDef,
-  ExpandedState,
-  flexRender,
-  getCoreRowModel,
-  getExpandedRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
-  SortingState,
-  useReactTable
-} from '@tanstack/react-table'
+import { ColumnDef, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table'
 
 import { Table as TableBase, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Stack } from '@/types/stack'
 import { Fragment, useState } from 'react'
-import { ExpandedRow, Row } from './stacks/ExpandedRow'
-import { StackComponent } from '@/types/stack-component'
+import { Row } from './stacks/ExpandedRow'
 
-interface DataTableProps {
-  columns: ColumnDef<StackComponent>[] | ColumnDef<Stack>[]
-  data: Stack[] | StackComponent[]
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
 }
 
-export function Table({ columns, data }: DataTableProps) {
+export function Table<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState<string>('')
-  const [expanded, setExpanded] = useState<ExpandedState>({})
 
   const table = useReactTable({
     data,
@@ -36,20 +23,16 @@ export function Table({ columns, data }: DataTableProps) {
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onGlobalFilterChange: setGlobalFilter,
-    getExpandedRowModel: getExpandedRowModel(),
-    getRowCanExpand: () => true,
     globalFilterFn: 'includesString',
-    onExpandedChange: setExpanded,
     state: {
       sorting,
-      globalFilter,
-      expanded
+      globalFilter
     }
   })
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="rounded-md border bg-background/50">
+      <div className="border rounded-md bg-background/50">
         <TableBase>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -69,7 +52,6 @@ export function Table({ columns, data }: DataTableProps) {
               table.getRowModel().rows.map((row) => (
                 <Fragment key={row.id}>
                   <Row row={row} />
-                  {/* {row.getIsExpanded() && <ExpandedRow row={row} />} */}
                 </Fragment>
               ))
             ) : (
