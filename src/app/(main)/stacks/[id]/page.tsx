@@ -1,7 +1,6 @@
 import { getStackComponentById } from '@/api/stack-components'
+import { CloseDetailButton } from '@/components/CloseDetailButton'
 import { StackComponentCard } from '@/components/StackComponentCard'
-import { SidebarClose } from 'lucide-react'
-import { Link } from 'next-view-transitions'
 
 interface StackDetailPageProps {
   params: {
@@ -13,11 +12,9 @@ export default async function StackDetailPage({ params: { id } }: StackDetailPag
   const detailComponent = await getStackComponentById(id)
 
   return (
-    <div className="sticky top-0 flex flex-col gap-2 px-4 py-4 h-dvh bg-background/35">
+    <div className="sticky top-0 flex h-dvh flex-col gap-2 bg-background/35 px-4 py-4">
       <div className="flex">
-        <Link href="/stacks">
-          <SidebarClose className="rotate-180 text-foreground/75" />
-        </Link>
+        <CloseDetailButton url="/stacks" removeKey="component" />
       </div>
 
       <StackComponentCard component={detailComponent} expanded />

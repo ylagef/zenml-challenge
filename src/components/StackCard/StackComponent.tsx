@@ -1,7 +1,8 @@
 'use client'
+
 import { cn } from '@/lib/utils'
 import { Link } from 'next-view-transitions'
-import { useParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import { Button } from '../ui/button'
 
 interface StackComponentProps {
@@ -11,10 +12,11 @@ interface StackComponentProps {
 
 export const StackComponent = ({ type, id }: StackComponentProps) => {
   const params = useParams()
+  const currentSearchParams = useSearchParams()
   const isNotSelected = params.id && params.id !== id
 
-  const searchParams = new URLSearchParams()
-  searchParams.append('component', id)
+  const searchParams = new URLSearchParams(currentSearchParams.toString())
+  searchParams.set('component', id)
   const href = `/stacks/${id}?${searchParams.toString()}`
 
   return (
