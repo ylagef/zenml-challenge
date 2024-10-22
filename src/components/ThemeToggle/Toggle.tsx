@@ -1,11 +1,11 @@
 'use client'
 
-import { Moon } from '@/components/icons/Moon'
 import { Spinner } from '@/components/icons/Spinner'
-import { Sun } from '@/components/icons/Sun'
+
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { KeyCallbackListener } from '../KeyListener/Callback'
+import { Moon, Sun } from 'lucide-react'
 
 enum THEME {
   LIGHT = 'light',
@@ -26,12 +26,12 @@ export const Toggle = () => {
     setSelectedTheme(theme as THEME)
   }, [theme])
 
-  if (!selectedTheme) return <Spinner className="h-6 aspect-square" />
+  if (!selectedTheme) return <Spinner className="aspect-square h-6" />
 
   return (
     <>
-      <button className="flex justify-center" onClick={toggleTheme}>
-        {selectedTheme === THEME.LIGHT ? <Moon /> : <Sun />}
+      <button className="flex justify-center opacity-75 hover:opacity-100" onClick={toggleTheme}>
+        {selectedTheme === THEME.LIGHT ? <Moon size={24} /> : <Sun size={24} />}
       </button>
 
       <KeyCallbackListener keys={['k']} ctrlCmd callback={toggleTheme} />

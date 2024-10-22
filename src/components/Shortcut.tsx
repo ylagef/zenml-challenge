@@ -1,10 +1,11 @@
 import { userAgent } from 'next/server'
 
 import { headers } from 'next/headers'
-import { Cmd } from './icons/Cmd'
-import { Ctrl } from './icons/Ctrl'
 
-export const Shortcut = ({ letter }: { letter: string }) => {
+import { cn } from '@/lib/utils'
+import { Command, SquareChevronUp } from 'lucide-react'
+
+export const Shortcut = ({ letter, className }: { letter: string; className?: string }) => {
   const { device } = userAgent({ headers: headers() })
   const isApple = device?.vendor === 'Apple'
   const isMobile = device?.type === 'mobile'
@@ -12,8 +13,9 @@ export const Shortcut = ({ letter }: { letter: string }) => {
   if (isMobile) return null
 
   return (
-    <span className="flex justify-center gap-1 text-xs text-foreground/50">
-      {isApple ? <Cmd /> : <Ctrl />}+ {letter}{' '}
+    <span className={cn('flex justify-center gap-1 text-xs text-foreground/50', className)}>
+      {isApple ? <Command size={16} /> : <SquareChevronUp size={16} />}
+      {letter}
     </span>
   )
 }

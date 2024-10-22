@@ -1,23 +1,26 @@
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu } from '@/components/ui/sidebar'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarTrigger
+} from '@/components/ui/sidebar'
 import { ROUTES } from '@/utils/routes'
 import { ThemeToggle } from '../ThemeToggle'
 import { MenuItem } from './MenuItem'
 import { Link } from 'next-view-transitions'
+import { Home } from 'lucide-react'
+import { Shortcut } from '../Shortcut'
+import { SidebarToggle } from '../SidebarToggle'
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <Link
-          href="/"
-          className="font-bold"
-          style={{
-            viewTransitionName: 'stack-builder'
-          }}
-        >
-          Stacks builder
-        </Link>
-      </SidebarHeader>
+    <Sidebar collapsible="icon" variant="floating">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -30,8 +33,9 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="flex w-full justify-center p-2">
+      <SidebarFooter className="flex w-full flex-row justify-center gap-2 px-4 py-2 group-data-[collapsible=icon]:flex-col md:justify-between">
         <ThemeToggle />
+        <SidebarToggle />
       </SidebarFooter>
     </Sidebar>
   )
