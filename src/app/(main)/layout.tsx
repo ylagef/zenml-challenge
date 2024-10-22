@@ -8,9 +8,9 @@ export default function MainLayout({ children }: PropsWithChildren) {
     <SidebarProvider defaultOpen={false}>
       <AppSidebar />
 
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-col flex-1">
         <HeaderWithMenuButton />
-        <main className="flex flex-1 p-2">{children}</main>
+        <main className="flex flex-1">{children}</main>
       </div>
     </SidebarProvider>
   )

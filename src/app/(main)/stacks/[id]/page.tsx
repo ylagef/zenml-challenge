@@ -1,25 +1,26 @@
 import { getStackComponentById } from '@/api/stack-components'
 import { StackComponentCard } from '@/components/StackComponentCard'
-import { X } from 'lucide-react'
+import { SidebarClose } from 'lucide-react'
 import { Link } from 'next-view-transitions'
 
-export default async function StackDetailPage({ params: { id } }: { params: { id: string } }) {
+interface StackDetailPageProps {
+  params: {
+    id: string
+  }
+}
+
+export default async function StackDetailPage({ params: { id } }: StackDetailPageProps) {
   const detailComponent = await getStackComponentById(id)
-  // console.log(id, detailComponent)
 
   return (
-    <div className="flex flex-col gap-2 px-2 py-4">
-      <div className="flex justify-end">
+    <div className="sticky top-0 flex flex-col gap-2 px-4 py-4 h-dvh bg-background/35">
+      <div className="flex">
         <Link href="/stacks">
-          <X />
+          <SidebarClose className="rotate-180 text-foreground/75" />
         </Link>
       </div>
-      <StackComponentCard component={detailComponent} expanded />
-      {/* <StackCard stack={stack} /> */}
 
-      {/* {Object.values(stack.components).map((componentId) => (
-        <StackComponentCard key={componentId[0]} componentId={componentId[0]} />
-      ))} */}
+      <StackComponentCard component={detailComponent} expanded />
     </div>
   )
 }

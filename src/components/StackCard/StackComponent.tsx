@@ -14,6 +14,7 @@ export const StackComponent = ({ type, id }: StackComponentProps) => {
   const isNotSelected = params.id && params.id !== id
 
   const searchParams = new URLSearchParams()
+  searchParams.append('component', id)
   const href = `/stacks/${id}?${searchParams.toString()}`
 
   return (
