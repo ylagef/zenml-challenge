@@ -2,7 +2,7 @@ import { getStacks } from '@/api/stacks'
 import { FiltersBar } from '@/components/FiltersBar'
 import { StackCard } from '@/components/StackCard'
 import { columns } from '@/components/tables/stacks/columns'
-import { StackComponentsTable } from '@/components/tables/stacks/rows'
+import { Table } from '@/components/tables/Table'
 import { Button } from '@/components/ui/button'
 import { Grid, List } from 'lucide-react'
 import { Link } from 'next-view-transitions'
@@ -25,7 +25,7 @@ export default async function StacksPage({ searchParams: { view, text = '' } }: 
   })
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className="flex flex-1 flex-col">
       <div className="flex justify-between gap-1 py-2">
         <FiltersBar />
 
@@ -44,7 +44,7 @@ export default async function StacksPage({ searchParams: { view, text = '' } }: 
       </div>
 
       {view === VIEW_MODE.LIST ? (
-        <StackComponentsTable columns={columns} data={filteredStacks} />
+        <Table columns={columns} data={filteredStacks} />
       ) : (
         <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {filteredStacks.map((stack) => (

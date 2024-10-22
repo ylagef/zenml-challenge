@@ -12,18 +12,18 @@ import {
   useReactTable
 } from '@tanstack/react-table'
 
-import { Input } from '@/components/ui/input'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Table as TableBase, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Stack } from '@/types/stack'
 import { Fragment, useState } from 'react'
-import { ExpandedRow, Row } from './ExpandedRow'
+import { ExpandedRow, Row } from './stacks/ExpandedRow'
+import { StackComponent } from '@/types/stack-component'
 
 interface DataTableProps {
-  columns: ColumnDef<Stack>[]
-  data: Stack[]
+  columns: ColumnDef<StackComponent>[] | ColumnDef<Stack>[]
+  data: Stack[] | StackComponent[]
 }
 
-export function StackComponentsTable({ columns, data }: DataTableProps) {
+export function Table({ columns, data }: DataTableProps) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState<string>('')
   const [expanded, setExpanded] = useState<ExpandedState>({})
@@ -49,17 +49,8 @@ export function StackComponentsTable({ columns, data }: DataTableProps) {
 
   return (
     <div className="flex flex-col gap-2">
-      {/* <div className="flex items-center">
-        <Input
-          placeholder="Filter..."
-          value={table.getState().globalFilter}
-          onChange={(e) => table.setGlobalFilter(String(e.target.value))}
-          className="w-full max-w-sm bg-background/50"
-        />
-      </div> */}
-
-      <div className="border rounded-md bg-background/50">
-        <Table>
+      <div className="rounded-md border bg-background/50">
+        <TableBase>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -78,7 +69,7 @@ export function StackComponentsTable({ columns, data }: DataTableProps) {
               table.getRowModel().rows.map((row) => (
                 <Fragment key={row.id}>
                   <Row row={row} />
-                  {row.getIsExpanded() && <ExpandedRow row={row} />}
+                  {/* {row.getIsExpanded() && <ExpandedRow row={row} />} */}
                 </Fragment>
               ))
             ) : (
@@ -89,7 +80,7 @@ export function StackComponentsTable({ columns, data }: DataTableProps) {
               </TableRow>
             )}
           </TableBody>
-        </Table>
+        </TableBase>
       </div>
     </div>
   )

@@ -2,11 +2,11 @@ import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
 import { Stack } from '@/types/stack'
-import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
+import { STACK_COMPONENT_TYPE, StackComponent } from '@/types/stack-component'
 import { flexRender, Row as RowT } from '@tanstack/react-table'
 import { Link } from 'next-view-transitions'
 
-export const Row = ({ row }: { row: RowT<Stack> }) => {
+export const Row = ({ row }: { row: RowT<Stack | StackComponent> }) => {
   return (
     <TableRow data-state={row.getIsSelected() && 'selected'}>
       {row.getVisibleCells().map((cell) => (
@@ -25,7 +25,7 @@ export const ExpandedRow = ({ row }: { row: RowT<Stack> }) => {
   return (
     <TableRow>
       <TableCell colSpan={row.getAllCells().length}>
-        <div className="flex w-full flex-wrap gap-2">
+        <div className="flex flex-wrap w-full gap-2">
           {Object.entries(components)
             .sort(([key]) => (MANDATORY_COMPONENTS.includes(key as STACK_COMPONENT_TYPE) ? -1 : 1))
             .map(([key, value]) => (

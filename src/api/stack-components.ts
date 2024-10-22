@@ -1,7 +1,7 @@
 import { StackComponent } from '@/types/stack-component'
 import { fetchRequest } from './utils'
 
-const SLUG = 'component'
+const SLUG = 'components'
 
 export const getStackComponents = async () => {
   const stackComponents = await fetchRequest<StackComponent[]>(SLUG)
@@ -12,7 +12,7 @@ export const getStackComponents = async () => {
 }
 
 export const getStackComponentById = async (id: string) => {
-  const stackComponent = await fetchRequest<StackComponent>(`${SLUG}/{component_id}?stack_component_id=${id}`)
+  const stackComponent = await fetchRequest<StackComponent>(`component/{component_id}?stack_component_id=${id}`)
   // console.log(stacks)
   return stackComponent
 }
