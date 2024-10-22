@@ -10,7 +10,7 @@ export const getStacks = async () => {
 }
 
 export const getStackById = async (id: string) => {
-  const stacks = await fetchRequest(`${SLUG}/${id}`)
+  const stack = await fetchRequest<Stack>(`${SLUG}/${id}`)
   // console.log(stacks)
-  return stacks
+  return stack
 }

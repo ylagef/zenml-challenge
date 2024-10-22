@@ -100,6 +100,7 @@ body {
 
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
   body {
     @apply bg-background text-foreground;
@@ -108,152 +109,126 @@ body {
 
 @layer stack-components {
   .orchestrator {
-    --border: 220 60% 85%; /* Soft blue to match primary accents */
-    --background: 220 100% 97%; /* Very light blue */
-    --foreground: 220 100% 30%; /* Darker blue for text contrast */
+    --border: 220 60% 85%;
+    --background: 220 100% 97%;
   }
   .artifact_store {
-    --border: 140 50% 80%; /* Soft green for a natural touch */
-    --background: 140 100% 94%; /* Light green */
-    --foreground: 140 100% 25%; /* Darker green for text */
+    --border: 140 50% 80%;
+    --background: 140 100% 94%;
   }
   .container_registry {
-    --border: 200 70% 80%; /* Soft cyan for the border */
-    --background: 200 100% 95%; /* Light cyan for the background */
-    --foreground: 200 100% 30%; /* Dark cyan for the text */
+    --border: 200 70% 80%;
+    --background: 200 100% 95%;
   }
 
   .data_validator {
-    --border: 40 70% 80%; /* Soft yellow for the border */
-    --background: 40 100% 94%; /* Light yellow */
-    --foreground: 40 100% 25%; /* Darker yellow for the text */
+    --border: 40 70% 80%;
+    --background: 40 100% 94%;
   }
 
   .experiment_tracker {
-    --border: 290 60% 85%; /* Soft purple for the border */
-    --background: 290 100% 97%; /* Very light purple */
-    --foreground: 290 100% 30%; /* Dark purple for the text */
+    --border: 290 60% 85%;
+    --background: 290 100% 97%;
   }
 
   .model_deployer {
-    --border: 10 80% 85%; /* Soft orange for the border */
-    --background: 10 100% 95%; /* Light orange */
-    --foreground: 10 100% 30%; /* Dark orange for the text */
+    --border: 10 80% 85%;
+    --background: 10 100% 95%;
   }
 
   .step_operator {
-    --border: 180 60% 80%; /* Soft teal for the border */
-    --background: 180 100% 95%; /* Light teal */
-    --foreground: 180 100% 30%; /* Dark teal for the text */
+    --border: 180 60% 80%;
+    --background: 180 100% 95%;
   }
 
   .alerter {
-    --border: 350 70% 80%; /* Soft pink for the border */
-    --background: 350 100% 95%; /* Light pink */
-    --foreground: 350 100% 30%; /* Dark pink for the text */
+    --border: 350 70% 80%;
+    --background: 350 100% 95%;
   }
 
   .image_builder {
-    --border: 50 70% 80%; /* Soft yellow-green for the border */
-    --background: 50 100% 95%; /* Light yellow-green */
-    --foreground: 50 100% 30%; /* Dark yellow-green for the text */
+    --border: 50 70% 80%;
+    --background: 50 100% 95%;
   }
 
   .annotator {
-    --border: 290 60% 80%; /* Soft magenta for the border */
-    --background: 290 100% 95%; /* Light magenta */
-    --foreground: 290 100% 30%; /* Dark magenta for the text */
+    --border: 290 60% 80%;
+    --background: 290 100% 95%;
   }
 
   .model_registry {
-    --border: 210 60% 80%; /* Soft blue for the border */
-    --background: 210 100% 95%; /* Light blue */
-    --foreground: 210 100% 30%; /* Dark blue for the text */
+    --border: 210 60% 80%;
+    --background: 210 100% 95%;
   }
 
   .feature_store {
-    --border: 140 60% 80%; /* Soft green for the border */
-    --background: 140 100% 95%; /* Light green */
-    --foreground: 140 100% 30%; /* Dark green for the text */
+    --border: 140 60% 80%;
+    --background: 140 100% 95%;
   }
   .secrets_manager {
-    --border: 190 60% 70%; /* Soft aqua for the border */
-    --background: 190 100% 92%; /* Light aqua */
-    --foreground: 190 100% 30%; /* Dark aqua for the text */
+    --border: 190 60% 70%;
+    --background: 190 100% 92%;
   }
 
   :root[data-theme='dark'] .orchestrator {
-    --border: 220 60% 50%; /* Medium blue for borders */
-    --background: 220 60% 15%; /* Dark blue for background */
-    --foreground: 220 100% 85%; /* Light blue for text */
+    --border: 220 60% 50%;
+    --background: 220 60% 15%;
   }
   :root[data-theme='dark'] .artifact_store {
-    --border: 140 50% 45%; /* Darker green for borders */
-    --background: 140 50% 15%; /* Dark green for background */
-    --foreground: 140 100% 85%; /* Light green for text */
+    --border: 140 50% 45%;
+    --background: 140 50% 15%;
   }
   :root[data-theme='dark'] .container_registry {
-    --border: 200 60% 50%; /* Medium cyan */
-    --background: 200 60% 15%; /* Dark cyan */
-    --foreground: 200 100% 85%; /* Light cyan */
+    --border: 200 60% 50%;
+    --background: 200 60% 15%;
   }
 
   :root[data-theme='dark'] .data_validator {
-    --border: 40 60% 50%; /* Medium yellow */
-    --background: 40 60% 15%; /* Dark yellow */
-    --foreground: 40 100% 85%; /* Light yellow */
+    --border: 40 60% 50%;
+    --background: 40 60% 15%;
   }
 
   :root[data-theme='dark'] .experiment_tracker {
-    --border: 290 60% 50%; /* Medium purple */
-    --background: 290 60% 15%; /* Dark purple */
-    --foreground: 290 100% 85%; /* Light purple */
+    --border: 290 60% 50%;
+    --background: 290 60% 15%;
   }
 
   :root[data-theme='dark'] .model_deployer {
-    --border: 10 80% 50%; /* Medium orange */
-    --background: 10 80% 15%; /* Dark orange */
-    --foreground: 10 100% 85%; /* Light orange */
+    --border: 10 80% 50%;
+    --background: 10 80% 15%;
   }
 
   :root[data-theme='dark'] .step_operator {
-    --border: 180 60% 50%; /* Medium teal */
-    --background: 180 60% 15%; /* Dark teal */
-    --foreground: 180 100% 85%; /* Light teal */
+    --border: 180 60% 50%;
+    --background: 180 60% 15%;
   }
 
   :root[data-theme='dark'] .alerter {
-    --border: 350 60% 50%; /* Medium pink */
-    --background: 350 60% 15%; /* Dark pink */
-    --foreground: 350 100% 85%; /* Light pink */
+    --border: 350 60% 50%;
+    --background: 350 60% 15%;
   }
 
   :root[data-theme='dark'] .image_builder {
-    --border: 50 60% 50%; /* Medium yellow-green */
-    --background: 50 60% 15%; /* Dark yellow-green */
-    --foreground: 50 100% 85%; /* Light yellow-green */
+    --border: 50 60% 50%;
+    --background: 50 60% 15%;
   }
 
   :root[data-theme='dark'] .annotator {
-    --border: 290 60% 50%; /* Medium magenta */
-    --background: 290 60% 15%; /* Dark magenta */
-    --foreground: 290 100% 85%; /* Light magenta */
+    --border: 290 60% 50%;
+    --background: 290 60% 15%;
   }
 
   :root[data-theme='dark'] .model_registry {
-    --border: 210 60% 50%; /* Medium blue */
-    --background: 210 60% 15%; /* Dark blue */
-    --foreground: 210 100% 85%; /* Light blue */
+    --border: 210 60% 50%;
+    --background: 210 60% 15%;
   }
 
   :root[data-theme='dark'] .feature_store {
-    --border: 140 60% 50%; /* Medium green */
-    --background: 140 60% 15%; /* Dark green */
-    --foreground: 140 100% 85%; /* Light green */
+    --border: 140 60% 50%;
+    --background: 140 60% 15%;
   }
   :root[data-theme='dark'] .secrets_manager {
-    --border: 190 60% 50%; /* Medium aqua */
-    --background: 190 60% 20%; /* Dark aqua */
-    --foreground: 190 100% 80%; /* Light aqua */
+    --border: 190 60% 50%;
+    --background: 190 60% 20%;
   }
 }

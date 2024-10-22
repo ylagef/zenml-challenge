@@ -9,6 +9,7 @@ export const fetchRequest = async <T extends unknown>(slug: string, options: Req
   })
 
   if (!response.ok) {
+    console.error(response)
     throw new Error(response.statusText)
   }
 

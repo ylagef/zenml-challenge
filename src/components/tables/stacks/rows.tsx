@@ -49,16 +49,16 @@ export function StackComponentsTable({ columns, data }: DataTableProps) {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <Input
           placeholder="Filter..."
           value={table.getState().globalFilter}
           onChange={(e) => table.setGlobalFilter(String(e.target.value))}
           className="w-full max-w-sm bg-background/50"
         />
-      </div>
+      </div> */}
 
-      <div className="rounded-md border bg-background/50">
+      <div className="border rounded-md bg-background/50">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

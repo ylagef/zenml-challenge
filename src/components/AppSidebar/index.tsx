@@ -33,7 +33,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="flex w-full flex-row justify-center gap-2 px-4 py-2 group-data-[collapsible=icon]:flex-col md:justify-between">
+      <SidebarFooter className="flex w-full flex-row justify-center px-4 py-2 group-data-[collapsible=icon]:flex-col group-data-[collapsible=icon]:gap-4 md:justify-between md:gap-2">
         <ThemeToggle />
         <SidebarToggle />
       </SidebarFooter>

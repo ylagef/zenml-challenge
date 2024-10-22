@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Stack } from '@/types/stack'
 import { ColumnDef } from '@tanstack/react-table'
-import { Filter, MoveDown, MoveRight } from 'lucide-react'
+import { ExternalLink, Eye, EyeOff, Filter, MoveDown, MoveRight, MoveUp } from 'lucide-react'
 import { Link } from 'next-view-transitions'
 import { BooleanCell, formatDate, SortableHeader } from '../utils'
 import { cn } from '@/lib/utils'
@@ -13,14 +13,14 @@ export const columns: ColumnDef<Stack>[] = [
     accessorKey: 'id',
     header: 'ID'
   },
-  {
-    accessorKey: 'project',
-    header: ({ column }) => SortableHeader<Stack>({ title: 'Project', column })
-  },
-  {
-    accessorKey: 'user',
-    header: ({ column }) => SortableHeader<Stack>({ title: 'User', column })
-  },
+  // {
+  //   accessorKey: 'project',
+  //   header: ({ column }) => SortableHeader<Stack>({ title: 'Project', column })
+  // },
+  // {
+  //   accessorKey: 'user',
+  //   header: ({ column }) => SortableHeader<Stack>({ title: 'User', column })
+  // },
   {
     accessorKey: 'name',
     header: ({ column }) => SortableHeader<Stack>({ title: 'Name', column })
@@ -30,11 +30,11 @@ export const columns: ColumnDef<Stack>[] = [
     header: ({ column }) => SortableHeader<Stack>({ title: 'Created at', column }),
     cell: ({ row }) => formatDate(row.original.created)
   },
-  {
-    accessorKey: 'updated',
-    header: ({ column }) => SortableHeader<Stack>({ title: 'Updated at', column }),
-    cell: ({ row }) => formatDate(row.original.updated)
-  },
+  // {
+  //   accessorKey: 'updated',
+  //   header: ({ column }) => SortableHeader<Stack>({ title: 'Updated at', column }),
+  //   cell: ({ row }) => formatDate(row.original.updated)
+  // },
   {
     accessorKey: 'is_shared',
     header: ({ column }) => SortableHeader<Stack>({ title: 'Shared', column }),
@@ -44,14 +44,15 @@ export const columns: ColumnDef<Stack>[] = [
     accessorKey: 'components',
     header: ({ column }) => SortableHeader<Stack>({ title: 'Components', column }),
     cell: ({ row }) => (
-      <div className="flex gap-2">
+      <div className="flex justify-center gap-1">
         <Button variant="ghost" asChild>
           <Link href={`/stack-components?stack=${row.original.id}`} className="flex gap-2">
             <Filter size={16} />
           </Link>
         </Button>
+
         <Button variant="ghost" onClick={row.getToggleExpandedHandler()}>
-          <MoveDown size={16} className={cn(row.getIsExpanded() && 'rotate-180')} />
+          {row.getIsExpanded() ? <EyeOff size={16} /> : <Eye size={16} />}
         </Button>
       </div>
     )
@@ -62,7 +63,7 @@ export const columns: ColumnDef<Stack>[] = [
     cell: ({ row }) => (
       <Button variant="ghost" asChild>
         <Link href={`/stacks/${row.original.id}`}>
-          <MoveRight size={16} />
+          <ExternalLink size={16} />
         </Link>
       </Button>
     )

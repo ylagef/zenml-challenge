@@ -13,3 +13,20 @@ export enum STACK_COMPONENT_TYPE {
   FEATURE_STORE = 'feature_store',
   SECRETS_MANAGER = 'secrets_manager'
 }
+
+export enum STACK_COMPONENT_FLAVOR {
+  KUBEFLOW = 'kubeflow'
+}
+
+export interface StackComponent {
+  id: string
+  created: string
+  updated: string
+  user: string
+  project: string
+  is_shared: boolean
+  name: string
+  type: STACK_COMPONENT_TYPE
+  flavor: STACK_COMPONENT_FLAVOR
+  configuration: Record<string, unknown>
+}

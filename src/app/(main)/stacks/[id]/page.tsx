@@ -1,9 +1,9 @@
-export default function StackDetailPage({ params: { id } }: { params: { id: string } }) {
-  console.log(id)
+import { getStackById } from '@/api/stacks'
+import { StackCard } from '@/components/StackCard'
 
-  return (
-    <div>
-      <h2>({id})</h2>
-    </div>
-  )
+export default async function StackDetailPage({ params: { id } }: { params: { id: string } }) {
+  const stack = await getStackById(id)
+  console.log(id, stack)
+
+  return <StackCard stack={stack} />
 }
