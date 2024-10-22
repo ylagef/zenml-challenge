@@ -1,18 +1,15 @@
 import { cn } from '@/lib/utils'
 import { StackComponent } from '@/types/stack-component'
-import React from 'react'
+import { Ellipsis } from 'lucide-react'
+import { Link } from 'next-view-transitions'
+import { ExpandableCode } from './ExpandableCode'
 import { formatDate } from './tables/utils'
 import { Badge } from './ui/badge'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { Link } from 'next-view-transitions'
-import { Ellipsis } from 'lucide-react'
 import { Separator } from './ui/separator'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { materialDark, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { ExpandableCode } from './ExpandableCode'
 
 export const StackComponentCard = ({ component }: { component: StackComponent }) => {
-  const { name, id, type, flavor, configuration, created, updated, is_shared } = component
+  const { name, id, type, flavor, project, configuration, created, updated, is_shared } = component
   return (
     <article className="flex flex-col overflow-hidden border rounded-md h-fit bg-background">
       <div className="flex justify-between w-full p-3">
@@ -35,7 +32,7 @@ export const StackComponentCard = ({ component }: { component: StackComponent })
       </div>
 
       <div className="flex flex-col gap-2 px-2">
-        <div className="flex flex-col w-full p-2">
+        <div className="flex flex-col w-full gap-1 p-2">
           <h3 className="mb-2 font-bold break-all text-md">{name}</h3>
           <label className="text-sm">
             <span className="font-bold">ID: </span>
@@ -44,6 +41,10 @@ export const StackComponentCard = ({ component }: { component: StackComponent })
           <label className="text-sm">
             <span className="font-bold">Flavor: </span>
             {flavor}
+          </label>
+          <label className="text-sm">
+            <span className="font-bold">Project: </span>
+            {project}
           </label>
           <label className="text-sm">
             <span className="font-bold">Created at: </span>

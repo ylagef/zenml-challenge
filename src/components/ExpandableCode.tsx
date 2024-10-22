@@ -19,8 +19,6 @@ export const ExpandableCode = ({ code }: { code: StackComponent['configuration']
     >
       <SyntaxHighlighter
         language="json"
-        wrapLines
-        wrapLongLines
         customStyle={{
           backgroundColor: 'hsl(var(--sidebar-background))',
           color: 'var(--foreground)',

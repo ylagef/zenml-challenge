@@ -23,8 +23,8 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
   const { mainComponents, otherComponents } = splitComponents(components)
 
   return (
-    <article className="flex h-fit max-w-full flex-col items-center gap-3 rounded-md border bg-background p-2 text-foreground">
-      <div className="flex w-full justify-between px-2 pt-2">
+    <article className="flex flex-col items-center max-w-full gap-3 p-2 border rounded-md h-fit bg-background text-foreground">
+      <div className="flex justify-between w-full px-2 pt-2">
         <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
         <DropdownMenu>
@@ -41,8 +41,8 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
         </DropdownMenu>
       </div>
 
-      <div className="flex w-full flex-col p-2">
-        <h3 className="text-md mb-2 break-all font-bold">{name}</h3>
+      <div className="flex flex-col w-full p-2">
+        <h3 className="mb-2 font-bold break-all text-md">{name}</h3>
         <label className="text-sm">
           <span className="font-bold">ID: </span>
           {id}
@@ -63,7 +63,7 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
 
       <Separator />
 
-      <div className="flex w-full flex-col gap-2">
+      <div className="flex flex-col w-full gap-2">
         {mainComponents.map(([type, id]) => (
           <StackComponent key={type} type={type} id={id[0]} />
         ))}
