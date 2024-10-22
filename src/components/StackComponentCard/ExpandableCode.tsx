@@ -6,8 +6,13 @@ import { ChevronUp } from 'lucide-react'
 import React, { useState } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 
-export const ExpandableCode = ({ code }: { code: StackComponent['configuration'] }) => {
-  const [expanded, setExpanded] = useState(false)
+interface ExpandableCodeProps {
+  code: StackComponent['configuration']
+  initialExpanded?: boolean
+}
+
+export const ExpandableCode = ({ code, initialExpanded = false }: ExpandableCodeProps) => {
+  const [expanded, setExpanded] = useState<boolean>(initialExpanded)
   const codeString = JSON.stringify(code, null, 2)
   const numberOfLines = codeString.split('\n').length
   const maxExpandedHeight = `${2 * numberOfLines}rem`

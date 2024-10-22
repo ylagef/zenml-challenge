@@ -9,7 +9,12 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Separator } from '../ui/separator'
 import { BaseCard } from '../BaseCard'
 
-export const StackComponentCard = ({ component }: { component: StackComponent }) => {
+interface StackComponentCardProps {
+  component: StackComponent
+  expanded?: boolean
+}
+
+export const StackComponentCard = ({ component, expanded }: StackComponentCardProps) => {
   const { name, id, type, flavor, project, configuration, created, updated, is_shared } = component
   return (
     <BaseCard>
@@ -61,7 +66,7 @@ export const StackComponentCard = ({ component }: { component: StackComponent })
 
         <div className="flex flex-col gap-2 px-2 pb-4">
           <label className="text-sm font-bold">Configuration:</label>
-          <ExpandableCode code={configuration} />
+          <ExpandableCode code={configuration} initialExpanded={expanded} />
         </div>
       </div>
     </BaseCard>

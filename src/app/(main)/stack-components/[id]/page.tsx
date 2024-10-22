@@ -3,7 +3,7 @@ import { StackComponentCard } from '@/components/StackComponentCard'
 
 export default async function StackComponentDetailPage({ params: { id } }: { params: { id: string } }) {
   const stackComponent = await getStackComponentById(id)
-  console.log(id, stackComponent)
+  // console.log(id, stackComponent)
 
   return (
     <>
