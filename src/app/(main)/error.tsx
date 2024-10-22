@@ -2,13 +2,14 @@
 
 import ErrorWrapper from '@/components/ErrorWrapper'
 import { Button } from '@/components/ui/button'
-import { Link } from 'next-view-transitions'
+import { Link, useTransitionRouter } from 'next-view-transitions'
 
 export default function Error({ error }: { error: Error }) {
+  const router = useTransitionRouter()
   return (
     <ErrorWrapper error={error}>
-      <Button asChild className="mt-8">
-        <Link href="/stack-components">Return to list</Link>
+      <Button className="mt-8" onClick={() => router.refresh()}>
+        Try again
       </Button>
     </ErrorWrapper>
   )
