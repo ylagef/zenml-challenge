@@ -8,7 +8,7 @@ export default function Error({ error }: { error: Error }) {
   const router = useTransitionRouter()
   return (
     <ErrorWrapper error={error}>
-      <Button className="mt-8" onClick={() => router.refresh()}>
+      <Button className="mt-8" onClick={() => window.location.reload()}>
         Try again
       </Button>
     </ErrorWrapper>

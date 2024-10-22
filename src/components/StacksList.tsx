@@ -39,7 +39,7 @@ export default async function StacksList({ stacks }: StacksListProps) {
     })
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className="flex flex-col px-2 grow">
       <div className="sticky top-0 flex justify-between gap-1 py-2 backdrop-blur">
         <FiltersBar />
 

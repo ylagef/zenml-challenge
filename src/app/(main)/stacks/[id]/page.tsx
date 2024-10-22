@@ -12,7 +12,7 @@ export default async function StackDetailPage({ params: { id } }: StackDetailPag
   const detailComponent = await getStackComponentById(id)
 
   return (
-    <div className="sticky top-0 flex h-dvh flex-col gap-2 bg-background/35 px-4 py-4">
+    <div className="sticky bottom-0 flex flex-col gap-2 px-4 py-4 max-h-1/2 bg-background/35 backdrop-blur sm:top-0 sm:h-dvh">
       <div className="flex">
         <CloseDetailButton url="/stacks" removeKey="component" />
       </div>
