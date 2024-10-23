@@ -6,8 +6,13 @@ import { StackComponent } from './StackComponent'
 import { ChevronUp } from 'lucide-react'
 import { useParams } from 'next/navigation'
 
-export const OtherComponents = ({ components }: { components: [string, any][] }) => {
-  const [expanded, setExpanded] = useState(false)
+interface OtherComponentsProps {
+  components: [string, any][]
+  initialExpanded?: boolean
+}
+
+export const OtherComponents = ({ components, initialExpanded = false }: OtherComponentsProps) => {
+  const [expanded, setExpanded] = useState(initialExpanded)
   const params = useParams()
 
   if (!components?.length) return <span className="flex items-center justify-center w-full h-24 text-sm text-gray-400">No other components yet</span>

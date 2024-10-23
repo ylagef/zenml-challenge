@@ -13,7 +13,8 @@ interface StackComponentProps {
 export const StackComponent = ({ type, id }: StackComponentProps) => {
   const params = useParams()
   const currentSearchParams = useSearchParams()
-  const isNotSelected = params.id && params.id !== id
+  const isStackPath = window.location.pathname.startsWith('/stacks')
+  const isNotSelected = isStackPath && params.id && params.id !== id
 
   const searchParams = new URLSearchParams(currentSearchParams.toString())
   searchParams.set('component', id)

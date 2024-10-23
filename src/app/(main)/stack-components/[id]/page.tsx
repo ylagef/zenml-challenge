@@ -10,5 +10,5 @@ interface StackDetailPageProps {
 export default async function StackDetailPage({ params: { id } }: StackDetailPageProps) {
   const detailStack = await getStackById(id)
 
-  return <StackCard stack={detailStack} />
+  return <StackCard stack={detailStack} expanded />
 }

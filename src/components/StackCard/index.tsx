@@ -12,7 +12,12 @@ import { OtherComponents } from './OtherComponents'
 import { DropdownMenuItem } from '../ui/dropdown-menu'
 import { Link } from 'next-view-transitions'
 
-export const StackCard = ({ stack }: { stack: Stack }) => {
+interface StackCardProps {
+  stack: Stack
+  expanded?: boolean
+}
+
+export const StackCard = ({ stack, expanded }: StackCardProps) => {
   const { id, description, name, created, updated, components, is_shared } = stack
   const { mainComponents, otherComponents } = splitComponents(components)
 
@@ -60,7 +65,7 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
 
       <Separator />
 
-      <OtherComponents components={otherComponents} />
+      <OtherComponents components={otherComponents} initialExpanded={expanded} />
 
       <AddComponentButton />
     </BaseCard>
