@@ -4,23 +4,27 @@ import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import { StackComponent } from './StackComponent'
 import { ChevronUp } from 'lucide-react'
+import { useParams } from 'next/navigation'
 
 export const OtherComponents = ({ components }: { components: [string, any][] }) => {
   const [expanded, setExpanded] = useState(false)
+  const params = useParams()
 
-  if (!components?.length) return <span className="flex h-24 w-full items-center justify-center text-sm text-gray-400">No other components yet</span>
+  if (!components?.length) return <span className="flex items-center justify-center w-full h-24 text-sm text-gray-400">No other components yet</span>
 
   const maxExpandedHeight = `${4 * components.length + 0.5}rem`
 
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex flex-col w-full">
       <div
         className={cn('flex w-full flex-col gap-2 overflow-hidden transition-[max-height]')}
         style={{ maxHeight: expanded ? maxExpandedHeight : '4rem' }}
       >
-        {components.map(([type, id]) => (
-          <StackComponent key={type} type={type} id={id[0]} />
-        ))}
+        {components
+          .sort(([_, id]) => (params && params.id === id[0] ? -1 : 1))
+          .map(([type, id]) => (
+            <StackComponent key={type} type={type} id={id[0]} />
+          ))}
       </div>
 
       {components.length > 1 && (
