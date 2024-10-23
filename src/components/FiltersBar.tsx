@@ -8,11 +8,7 @@ import { useSearchParamFilter } from '@/hooks/useSearchParamFilter'
 import { SelectComponent } from './SelectComponent'
 import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
 
-interface FiltersBarProps {
-  stacks: Stack[]
-}
-
-export const FiltersBar = ({ stacks }: FiltersBarProps) => {
+export const FiltersBar = () => {
   const searchParams = useSearchParams()
   const { addFilter } = useSearchParamFilter()
 
@@ -26,7 +22,7 @@ export const FiltersBar = ({ stacks }: FiltersBarProps) => {
       />
 
       <SelectComponent
-        placeholder="Components"
+        placeholder="Component type"
         options={Object.values(STACK_COMPONENT_TYPE).map((value) => ({ value, label: value }))}
         onChange={(e) => addFilter('component', e.map((s) => s.value).join(','))}
       />

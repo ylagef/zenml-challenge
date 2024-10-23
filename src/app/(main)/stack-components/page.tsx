@@ -14,17 +14,28 @@ enum VIEW_MODE {
   GRID = 'grid',
   LIST = 'list'
 }
+interface StackComponentsPageProps {
+  searchParams: { view?: VIEW_MODE; text?: string; component?: string }
+}
 
-export default async function StackComponentsPage({ searchParams: { view, text = '' } }: { searchParams: { view?: VIEW_MODE; text?: string } }) {
+export default async function StackComponentsPage({ searchParams: { view, text = '', component = '' } }: StackComponentsPageProps) {
   const stackComponents = await getStackComponents()
 
-  const filteredStackComponents = stackComponents.filter((stack) => {
-    const regex = new RegExp(text, 'i')
-    return Object.values(stack).some((value) => {
-      if (typeof value === 'object') return false
-      return regex.test(value as string)
+  const filteredStackComponents = stackComponents
+    .filter((stackComponent) => {
+      const regex = new RegExp(text, 'i')
+      return Object.values(stackComponent).some((value) => {
+        if (typeof value === 'object') return false
+        return regex.test(value as string)
+      })
     })
-  })
+    .filter((stackComponent) => {
+      if (component) {
+        const componentFilters = component.split(',')
+        return componentFilters.some((component) => stackComponent.type === component)
+      }
+      return true
+    })
 
   return (
     <div className="flex flex-1 flex-col">
