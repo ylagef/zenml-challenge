@@ -13,7 +13,7 @@ interface StackComponentsPageProps {
 export default function StackComponentsList({ stackComponents }: StackComponentsPageProps) {
   const searchParams = useSearchParams()
   const text = searchParams.get('text') || ''
-  const component_id = searchParams.get('componen_id') || ''
+  const component_id = searchParams.get('component_id') || ''
   const sort = searchParams.get('sort') || ''
   const component_type = searchParams.get('component_type') || ''
 
@@ -33,8 +33,10 @@ export default function StackComponentsList({ stackComponents }: StackComponents
       return true
     })
     .filter((stackComponent) => {
+      console.log(component_id)
       if (component_id) {
         const componentFilters = component_id.split(',')
+        console.log(componentFilters)
         return componentFilters.some((component) => stackComponent.id === component)
       }
       return true
@@ -51,13 +53,13 @@ export default function StackComponentsList({ stackComponents }: StackComponents
     })
 
   return (
-    <div className="flex w-full flex-1 flex-col px-2">
+    <div className="flex flex-col flex-1 w-full px-2">
       <div className="sticky top-0 flex flex-col justify-between gap-1 py-2 backdrop-blur">
         <HeaderWithMenuButton />
         <FiltersBar />
       </div>
 
-      <div className="flex w-full flex-wrap gap-2 overflow-y-auto">
+      <div className="flex flex-wrap w-full gap-2 overflow-y-auto">
         {filteredStackComponents.map((stackComponent) => (
           <StackComponentCard key={stackComponent.id} component={stackComponent} />
         ))}
