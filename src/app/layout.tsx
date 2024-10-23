@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
 import { ViewTransitions } from 'next-view-transitions'
+import { Toaster } from 'sonner'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
         <body className={cn('mx-auto flex h-dvh flex-col antialiased', inter.className)}>
           <ThemeProvider attribute="data-theme" defaultTheme="dark">
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

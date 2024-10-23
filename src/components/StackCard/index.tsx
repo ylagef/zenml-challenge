@@ -19,6 +19,7 @@ import { Badge } from '../ui/badge'
 import { cn } from '@/lib/utils'
 import { BaseCard } from '../BaseCard'
 import { formatDate } from '@/utils/date'
+import { comingSoonToast } from '@/utils/toast'
 
 export const StackCard = ({ stack }: { stack: Stack }) => {
   const { id, description, name, created, updated, components, is_shared } = stack
@@ -26,7 +27,7 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
 
   return (
     <BaseCard>
-      <div className="flex justify-between w-full px-2 pt-2">
+      <div className="flex w-full justify-between px-2 pt-2">
         <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
         <DropdownMenu>
@@ -37,14 +38,16 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
             <DropdownMenuItem>
               <Link href={`/stacks/${id}`}>View detail</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>Update</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-800">Delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={comingSoonToast}>Update</DropdownMenuItem>
+            <DropdownMenuItem onClick={comingSoonToast} className="text-red-800">
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
 
-      <div className="flex flex-col w-full p-2">
-        <h3 className="mb-2 font-bold break-all text-md">{name}</h3>
+      <div className="flex w-full flex-col p-2">
+        <h3 className="text-md mb-2 break-all font-bold">{name}</h3>
         <label className="text-sm">
           <span className="font-bold">ID: </span>
           {id}
@@ -65,7 +68,7 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
 
       <Separator />
 
-      <div className="flex flex-col w-full gap-2">
+      <div className="flex w-full flex-col gap-2">
         {mainComponents.map(([type, id]) => (
           <StackComponent key={type} type={type} id={id[0]} />
         ))}

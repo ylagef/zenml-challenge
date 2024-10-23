@@ -8,6 +8,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Separator } from '../ui/separator'
 import { BaseCard } from '../BaseCard'
 import { formatDate } from '@/utils/date'
+import { comingSoonToast } from '@/utils/toast'
 
 interface StackComponentCardProps {
   component: StackComponent
@@ -31,8 +32,10 @@ export const StackComponentCard = ({ component, expanded }: StackComponentCardPr
             <DropdownMenuItem>
               <Link href={`/stack-components/${id}`}>View detail</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>Update</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-800">Delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={comingSoonToast}>Update</DropdownMenuItem>
+            <DropdownMenuItem onClick={comingSoonToast} className="text-red-800">
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
