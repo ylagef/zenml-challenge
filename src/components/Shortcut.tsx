@@ -1,9 +1,8 @@
+import { Command, SquareChevronUp } from 'lucide-react'
+import { headers } from 'next/headers'
 import { userAgent } from 'next/server'
 
-import { headers } from 'next/headers'
-
 import { cn } from '@/lib/utils'
-import { Command, SquareChevronUp } from 'lucide-react'
 
 export const Shortcut = ({ letter, className }: { letter: string; className?: string }) => {
   const { device } = userAgent({ headers: headers() })

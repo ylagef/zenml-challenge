@@ -1,6 +1,7 @@
+import { Link } from 'next-view-transitions'
+
 import { KeyNavigationListener } from '@/components/KeyListener/Navigation'
 import { ThemeToggle } from '@/components/ThemeToggle'
-import { Link } from 'next-view-transitions'
 
 export default function Home() {
   return (

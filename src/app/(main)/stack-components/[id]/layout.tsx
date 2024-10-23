@@ -1,6 +1,7 @@
+import { PropsWithChildren } from 'react'
+
 import { CloseDetailButton } from '@/components/CloseDetailButton'
 import { Separator } from '@/components/ui/separator'
-import { PropsWithChildren } from 'react'
 
 export default function Layout({ children }: PropsWithChildren) {
   return (

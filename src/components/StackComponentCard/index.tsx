@@ -1,13 +1,15 @@
+import { Link } from 'next-view-transitions'
+
 import { cn } from '@/lib/utils'
 import { StackComponent } from '@/types/stack-component'
 import { formatDate } from '@/utils/date'
+
 import { BaseCard } from '../BaseCard'
 import { CardDropdownMenu } from '../CardDropdownMenu'
 import { Badge } from '../ui/badge'
+import { DropdownMenuItem } from '../ui/dropdown-menu'
 import { Separator } from '../ui/separator'
 import { ExpandableCode } from './ExpandableCode'
-import { DropdownMenuItem } from '../ui/dropdown-menu'
-import { Link } from 'next-view-transitions'
 
 interface StackComponentCardProps {
   component: StackComponent

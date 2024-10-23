@@ -1,10 +1,12 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { useState } from 'react'
-import { StackComponent } from './StackComponent'
 import { ChevronUp } from 'lucide-react'
 import { useParams } from 'next/navigation'
+import { useState } from 'react'
+
+import { cn } from '@/lib/utils'
+
+import { StackComponent } from './StackComponent'
 
 interface OtherComponentsProps {
   components: [string, any][]
@@ -26,7 +28,7 @@ export const OtherComponents = ({ components, initialExpanded = false }: OtherCo
         style={{ maxHeight: expanded ? maxExpandedHeight : '4rem' }}
       >
         {components
-          .sort(([_, id]) => (params && params.id === id[0] ? -1 : 1))
+          .sort(([, id]) => (params && params.id === id[0] ? -1 : 1))
           .map(([type, id]) => (
             <StackComponent key={type} type={type} id={id[0]} />
           ))}

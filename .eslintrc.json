@@ -12,7 +12,11 @@
       }
     ],
     "no-undef": "warn",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "camelcase": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unnecessary-type-constraint": "warn",
+    "@typescript-eslint/no-require-imports": "warn"
   },
   "ignorePatterns": ["node_modules/", "out/", ".next/", "public/", "src/components/ui"]
 }

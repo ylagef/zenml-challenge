@@ -1,11 +1,13 @@
 'use client'
 
-import { FiltersBar } from './FiltersBar'
+import { useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
+
 import { StackCard } from '@/components/StackCard'
 import { Stack } from '@/types/stack'
-import { useSearchParams } from 'next/navigation'
+
 import { HeaderWithMenuButton } from '../HeaderWithMenuButton'
-import { useMemo } from 'react'
+import { FiltersBar } from './FiltersBar'
 
 interface StacksListProps {
   stacks: Stack[]

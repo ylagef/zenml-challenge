@@ -1,10 +1,11 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { StackComponent } from '@/types/stack-component'
 import { ChevronUp } from 'lucide-react'
 import React, { useState } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
+
+import { cn } from '@/lib/utils'
+import { StackComponent } from '@/types/stack-component'
 
 interface ExpandableCodeProps {
   code: StackComponent['configuration']

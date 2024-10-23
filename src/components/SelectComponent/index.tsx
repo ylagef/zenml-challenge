@@ -1,6 +1,4 @@
 import Select, { ActionMeta, MultiValue } from 'react-select'
-
-import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
 import makeAnimated from 'react-select/animated'
 
 interface SelectComponentProps<T extends unknown> {

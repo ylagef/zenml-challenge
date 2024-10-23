@@ -1,6 +1,7 @@
+import { PropsWithChildren } from 'react'
+
 import { getStacks } from '@/api/stacks'
 import StacksList from '@/components/StacksList'
-import { PropsWithChildren } from 'react'
 
 export default async function StacksLayout({ children }: PropsWithChildren) {
   const stacks = await getStacks()

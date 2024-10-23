@@ -1,11 +1,12 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { Input } from '../ui/input'
 
 import { useSearchParamFilter } from '@/hooks/useSearchParamFilter'
 import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
+
 import { SelectComponent } from '../SelectComponent'
+import { Input } from '../ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 
 export const FiltersBar = ({ flavors }: { flavors: string[] }) => {

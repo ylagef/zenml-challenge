@@ -1,4 +1,5 @@
 import { Stack } from '@/types/stack'
+
 import { fetchRequest } from './utils'
 
 const SLUG = 'stacks'

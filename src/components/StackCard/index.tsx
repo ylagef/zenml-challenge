@@ -1,16 +1,17 @@
-import { Stack } from '@/types/stack'
-import { splitComponents } from '@/utils/stacks'
-import { StackComponent } from './StackComponent'
+import { Link } from 'next-view-transitions'
 
+import { Stack } from '@/types/stack'
 import { formatDate } from '@/utils/date'
+import { splitComponents } from '@/utils/stacks'
+
 import { AddComponentButton } from '../AddComponentButton'
 import { BaseCard } from '../BaseCard'
 import { CardDropdownMenu } from '../CardDropdownMenu'
 import { Badge } from '../ui/badge'
+import { DropdownMenuItem } from '../ui/dropdown-menu'
 import { Separator } from '../ui/separator'
 import { OtherComponents } from './OtherComponents'
-import { DropdownMenuItem } from '../ui/dropdown-menu'
-import { Link } from 'next-view-transitions'
+import { StackComponent } from './StackComponent'
 
 interface StackCardProps {
   stack: Stack
@@ -28,7 +29,7 @@ export const StackCard = ({ stack, expanded }: StackCardProps) => {
 
         <CardDropdownMenu>
           <DropdownMenuItem>
-            <Link href={`/stack-components/${id}?component_id=${[...mainComponents, ...otherComponents].map(([_, [id]]) => id).join(',')}`}>
+            <Link href={`/stack-components/${id}?component_id=${[...mainComponents, ...otherComponents].map(([, [id]]) => id).join(',')}`}>
               View components
             </Link>
           </DropdownMenuItem>
@@ -43,7 +44,7 @@ export const StackCard = ({ stack, expanded }: StackCardProps) => {
         </label>
         <label className="text-sm">
           <span className="font-bold">Description: </span>
-          {description ? description : <i className="text-foreground/50">None</i>}
+          {description || <i className="text-foreground/50">None</i>}
         </label>
         <label className="text-sm">
           <span className="font-bold">Created at: </span>

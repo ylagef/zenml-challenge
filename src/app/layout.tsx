@@ -1,12 +1,13 @@
-import { ThemeProvider } from '@/contexts/ThemeProvider'
+import './globals.css'
 
-import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ReactNode } from 'react'
-import './globals.css'
 import { ViewTransitions } from 'next-view-transitions'
+import { ReactNode } from 'react'
 import { Toaster } from 'sonner'
+
+import { ThemeProvider } from '@/contexts/ThemeProvider'
+import { cn } from '@/lib/utils'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {

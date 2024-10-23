@@ -1,6 +1,7 @@
 'use client'
 
 import { PanelLeft } from 'lucide-react'
+
 import { useSidebar } from '../ui/sidebar'
 
 export const Toggle = () => {

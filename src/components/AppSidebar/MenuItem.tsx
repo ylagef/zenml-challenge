@@ -1,11 +1,12 @@
 'use client'
 
-import { Route } from '@/utils/routes'
-import React from 'react'
-import { SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
-
 import { usePathname } from 'next/navigation'
 import { Link } from 'next-view-transitions'
+import React from 'react'
+
+import { Route } from '@/utils/routes'
+
+import { SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar'
 
 export const MenuItem = ({ route }: { route: Route }) => {
   const pathName = usePathname()

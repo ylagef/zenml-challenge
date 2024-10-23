@@ -1,8 +1,10 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-import { Link } from 'next-view-transitions'
 import { useParams, usePathname, useSearchParams } from 'next/navigation'
+import { Link } from 'next-view-transitions'
+
+import { cn } from '@/lib/utils'
+
 import { Button } from '../ui/button'
 
 interface StackComponentProps {

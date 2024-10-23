@@ -1,9 +1,10 @@
 'use client'
 
 import { Plus } from 'lucide-react'
-import { Button } from './ui/button'
-import { toast } from 'sonner'
+
 import { comingSoonToast } from '@/utils/toast'
+
+import { Button } from './ui/button'
 
 export const AddComponentButton = () => {
   return (

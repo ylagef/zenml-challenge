@@ -1,22 +1,9 @@
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarTrigger
-} from '@/components/ui/sidebar'
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarMenu } from '@/components/ui/sidebar'
 import { ROUTES } from '@/utils/routes'
+
+import { SidebarToggle } from '../SidebarToggle'
 import { ThemeToggle } from '../ThemeToggle'
 import { MenuItem } from './MenuItem'
-import { Link } from 'next-view-transitions'
-import { Home } from 'lucide-react'
-import { Shortcut } from '../Shortcut'
-import { SidebarToggle } from '../SidebarToggle'
 
 export function AppSidebar() {
   return (

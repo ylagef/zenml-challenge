@@ -1,11 +1,12 @@
 'use client'
 
+import { SidebarClose } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
+import { Link } from 'next-view-transitions'
+import React from 'react'
+
 import { useIsMobile } from '@/hooks/use-mobile'
 import { cn } from '@/lib/utils'
-import { SidebarClose } from 'lucide-react'
-import { Link } from 'next-view-transitions'
-import { useSearchParams } from 'next/navigation'
-import React from 'react'
 
 export const CloseDetailButton = ({ url, removeKey }: { url: string; removeKey?: string }) => {
   const isMobile = useIsMobile()

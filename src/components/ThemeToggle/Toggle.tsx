@@ -1,11 +1,12 @@
 'use client'
 
-import { Spinner } from '@/components/icons/Spinner'
-
+import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+
+import { Spinner } from '@/components/icons/Spinner'
+
 import { KeyCallbackListener } from '../KeyListener/Callback'
-import { Moon, Sun } from 'lucide-react'
 
 enum THEME {
   LIGHT = 'light',
