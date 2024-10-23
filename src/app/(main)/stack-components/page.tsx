@@ -27,13 +27,13 @@ export default async function StackComponentsPage({ searchParams: { text = '', c
     })
 
   return (
-    <div className="flex flex-col flex-1 w-full px-2">
+    <div className="flex w-full flex-1 flex-col px-2">
       <div className="sticky top-0 flex flex-col justify-between gap-1 py-2 backdrop-blur">
         <HeaderWithMenuButton />
         <FiltersBar />
       </div>
 
-      <div className="flex flex-wrap w-full gap-2">
+      <div className="flex w-full flex-wrap gap-2 overflow-y-auto">
         {filteredStackComponents.map((stackComponent) => (
           <StackComponentCard key={stackComponent.id} component={stackComponent} />
         ))}

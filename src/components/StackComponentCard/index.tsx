@@ -21,7 +21,7 @@ export const StackComponentCard = ({ component, expanded }: StackComponentCardPr
       <div className="flex justify-between w-full px-2 pt-2">
         <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
-        <span className={cn('w-fit rounded-full border bg-background px-3 py-1 text-center text-sm', type)}>{type}</span>
+        <Badge className={cn('border border-border bg-background text-foreground', type)}>{type}</Badge>
 
         <CardDropdownMenu>
           <DropdownMenuItem>
