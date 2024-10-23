@@ -1,37 +1,34 @@
 'use client'
 
+import { Stack } from '@/types/stack'
 import { useSearchParams } from 'next/navigation'
 import { Input } from './ui/input'
-import { useTransitionRouter } from 'next-view-transitions'
-import { useDebouncedCallback } from 'use-debounce'
 
-export const FiltersBar = () => {
+import { useSearchParamFilter } from '@/hooks/useSearchParamFilter'
+import { SelectComponent } from './SelectComponent'
+import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
+
+interface FiltersBarProps {
+  stacks: Stack[]
+}
+
+export const FiltersBar = ({ stacks }: FiltersBarProps) => {
   const searchParams = useSearchParams()
-  const router = useTransitionRouter()
-
-  const addSearchParamFilter = (key: string, value: string) => {
-    const params = new URLSearchParams(location.search)
-
-    if (value) {
-      params.set(key, value)
-    } else {
-      params.delete(key)
-    }
-
-    router.push(`${location.pathname}?${params.toString()}`)
-  }
-
-  const debouncedFilter = useDebouncedCallback((key, value) => {
-    addSearchParamFilter(key, value)
-  }, 500)
+  const { addFilter } = useSearchParamFilter()
 
   return (
     <div className="flex gap-2 grow">
       <Input
         placeholder="Filter..."
         defaultValue={searchParams.get('text') || ''}
-        onChange={(e) => debouncedFilter('text', e.target.value)}
+        onChange={(e) => addFilter('text', e.target.value)}
         className="max-w-sm grow"
+      />
+
+      <SelectComponent
+        placeholder="Components"
+        options={Object.values(STACK_COMPONENT_TYPE).map((value) => ({ value, label: value }))}
+        onChange={(e) => addFilter('component', e.map((s) => s.value).join(','))}
       />
     </div>
   )
