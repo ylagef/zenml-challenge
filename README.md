@@ -9,7 +9,7 @@ Follow these steps to install the necessary dependencies and launch the applicat
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- yarn
+- yarn or pnpm
 
 ### Unzip the ZIP File
 
@@ -29,6 +29,11 @@ Use yarn to install the required dependencies:
 $ yarn install
 ```
 
+```bash
+# Using pnpm
+$ pnpm install
+```
+
 ## Running the Project
 
 You can run the project as a production build:
@@ -43,6 +48,14 @@ $ yarn run build
 
 # Start the server in production
 $ yarn start
+```
+
+```bash
+# Build the project
+$ pnpm run build
+
+# Start the server in production
+$ pnpm start
 ```
 
 ## Environment Configuration
