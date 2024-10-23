@@ -13,5 +13,6 @@
     ],
     "no-undef": "warn",
     "no-unused-vars": "warn"
-  }
+  },
+  "ignorePatterns": ["node_modules/", "out/", ".next/", "public/", "src/components/ui"]
 }
