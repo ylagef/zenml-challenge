@@ -1,24 +1,12 @@
 import { getStackComponents } from '@/api/stack-components'
-import { getStacks } from '@/api/stacks'
 import { FiltersBar } from '@/components/FiltersBar'
-import { StackCard } from '@/components/StackCard'
-import { StackComponent } from '@/components/StackCard/StackComponent'
 import { StackComponentCard } from '@/components/StackComponentCard'
-import { columns } from '@/components/tables/stack-components/columns'
-import { Table } from '@/components/tables/Table'
-import { Button } from '@/components/ui/button'
-import { Grid, List } from 'lucide-react'
-import { Link } from 'next-view-transitions'
 
-enum VIEW_MODE {
-  GRID = 'grid',
-  LIST = 'list'
-}
 interface StackComponentsPageProps {
-  searchParams: { view?: VIEW_MODE; text?: string; component?: string }
+  searchParams: { text?: string; component?: string }
 }
 
-export default async function StackComponentsPage({ searchParams: { view, text = '', component = '' } }: StackComponentsPageProps) {
+export default async function StackComponentsPage({ searchParams: { text = '', component = '' } }: StackComponentsPageProps) {
   const stackComponents = await getStackComponents()
 
   const filteredStackComponents = stackComponents
@@ -38,33 +26,16 @@ export default async function StackComponentsPage({ searchParams: { view, text =
     })
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-col flex-1">
       <div className="flex justify-between gap-1 py-2">
         <FiltersBar />
-
-        <span className="flex gap-1">
-          <Button variant="ghost" asChild>
-            <Link href={`/stack-components?view=${VIEW_MODE.GRID}`}>
-              <Grid />
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href={`/stack-components?view=${VIEW_MODE.LIST}`}>
-              <List />
-            </Link>
-          </Button>
-        </span>
       </div>
 
-      {view === VIEW_MODE.LIST ? (
-        <Table columns={columns} data={filteredStackComponents} />
-      ) : (
-        <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-          {filteredStackComponents.map((stackComponent) => (
-            <StackComponentCard key={stackComponent.id} component={stackComponent} />
-          ))}
-        </div>
-      )}
+      <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        {filteredStackComponents.map((stackComponent) => (
+          <StackComponentCard key={stackComponent.id} component={stackComponent} />
+        ))}
+      </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { Stack } from '@/types/stack'
 import { splitComponents } from '@/utils/stacks'
 import { StackComponent } from './StackComponent'
-import { formatDate } from '../tables/utils'
+
 import { Separator } from '../ui/separator'
 import { AddComponentButton } from '../AddComponentButton'
 import { OtherComponents } from './OtherComponents'
@@ -18,6 +18,7 @@ import { Link } from 'next-view-transitions'
 import { Badge } from '../ui/badge'
 import { cn } from '@/lib/utils'
 import { BaseCard } from '../BaseCard'
+import { formatDate } from '@/utils/date'
 
 export const StackCard = ({ stack }: { stack: Stack }) => {
   const { id, description, name, created, updated, components, is_shared } = stack

@@ -3,11 +3,11 @@ import { StackComponent } from '@/types/stack-component'
 import { Ellipsis } from 'lucide-react'
 import { Link } from 'next-view-transitions'
 import { ExpandableCode } from './ExpandableCode'
-import { formatDate } from '../tables/utils'
 import { Badge } from '../ui/badge'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu'
 import { Separator } from '../ui/separator'
 import { BaseCard } from '../BaseCard'
+import { formatDate } from '@/utils/date'
 
 interface StackComponentCardProps {
   component: StackComponent
