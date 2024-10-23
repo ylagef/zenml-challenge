@@ -32,7 +32,7 @@ export const SelectComponent = <T extends unknown>({ options, onChange, placehol
       isMulti
       closeMenuOnSelect={false}
       options={options}
-      className="min-w-52"
+      className="min-w-52 grow sm:max-w-48"
       styles={{
         clearIndicator: (base) => ({
           ...base,

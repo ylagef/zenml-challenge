@@ -25,6 +25,7 @@ export default async function StacksList({ stacks }: StacksListProps) {
   const view = searchParams.get('view') as VIEW_MODE
   const text = searchParams.get('text') || ''
   const components = searchParams.get('component') || ''
+  const sort = searchParams.get('sort') || ''
 
   const filteredStacks = stacks
     .filter((stack) => {
@@ -43,13 +44,20 @@ export default async function StacksList({ stacks }: StacksListProps) {
       }
       return true
     })
+    .sort((a, b) => {
+      if (sort === 'created_at') {
+        return new Date(b.created).getTime() - new Date(a.created).getTime()
+      } else if (sort === 'updated_at') {
+        return new Date(b.updated).getTime() - new Date(a.updated).getTime()
+      } else {
+        return a.name.localeCompare(b.name)
+      }
+    })
 
   return (
     <div className="flex flex-col px-2 grow">
       <div className="sticky top-0 flex justify-between gap-1 py-2 backdrop-blur">
-        <FiltersBar />
-
-        <span className="flex gap-1">
+        {/* <span className="flex gap-1">
           <Button variant="ghost" asChild>
             <Link href={`/stacks?view=${VIEW_MODE.GRID}`}>
               <Grid />
@@ -60,7 +68,9 @@ export default async function StacksList({ stacks }: StacksListProps) {
               <List />
             </Link>
           </Button>
-        </span>
+        </span> */}
+
+        <FiltersBar />
       </div>
 
       {view === VIEW_MODE.LIST ? (
