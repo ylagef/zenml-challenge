@@ -47,13 +47,13 @@ export default function StacksList({ stacks }: StacksListProps) {
   }, [stacks, text, components, sort])
 
   return (
-    <div className="flex w-full grow flex-col px-2">
-      <div className="sticky top-0 flex flex-col justify-between gap-1 py-2 backdrop-blur">
+    <div className="flex flex-col w-full px-2 grow">
+      <div className="sticky top-0 z-10 flex flex-col justify-between gap-1 py-2 backdrop-blur">
         <HeaderWithMenuButton />
         <FiltersBar />
       </div>
 
-      <div className="flex w-full flex-wrap gap-2 overflow-y-auto">
+      <div className="flex flex-wrap w-full gap-2 overflow-y-auto">
         {filteredStacks.map((stack) => (
           <StackCard key={stack.id} stack={stack} />
         ))}
