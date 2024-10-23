@@ -3,7 +3,6 @@
 import { FiltersBar } from '@/components/FiltersBar'
 import { StackCard } from '@/components/StackCard'
 import { Stack } from '@/types/stack'
-import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
 import { useSearchParams } from 'next/navigation'
 
 interface StacksListProps {
@@ -27,19 +26,19 @@ export default async function StacksList({ stacks }: StacksListProps) {
       )
     })
     .filter((stack) => {
-      if (components) {
-        const componentFilters = components.split(',')
-        return componentFilters.some((component) => stack.components[component as STACK_COMPONENT_TYPE])
-      }
-      return true
+      if (!components) return true
+
+      const componentFilters = components.split(',')
+      return Object.values(stack.components).some(([type]) => componentFilters.includes(type))
     })
     .sort((a, b) => {
-      if (sort === 'created_at') {
-        return new Date(b.created).getTime() - new Date(a.created).getTime()
-      } else if (sort === 'updated_at') {
-        return new Date(b.updated).getTime() - new Date(a.updated).getTime()
-      } else {
-        return a.name.localeCompare(b.name)
+      switch (sort) {
+        case 'created_at':
+          return new Date(b.created).getTime() - new Date(a.created).getTime()
+        case 'updated_at':
+          return new Date(b.updated).getTime() - new Date(a.updated).getTime()
+        default:
+          return a.name.localeCompare(b.name)
       }
     })
 

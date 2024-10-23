@@ -6,6 +6,8 @@ import { CardDropdownMenu } from '../CardDropdownMenu'
 import { Badge } from '../ui/badge'
 import { Separator } from '../ui/separator'
 import { ExpandableCode } from './ExpandableCode'
+import { DropdownMenuItem } from '../ui/dropdown-menu'
+import { Link } from 'next-view-transitions'
 
 interface StackComponentCardProps {
   component: StackComponent
@@ -16,17 +18,21 @@ export const StackComponentCard = ({ component, expanded }: StackComponentCardPr
   const { name, id, type, flavor, project, configuration, created, updated, is_shared } = component
   return (
     <BaseCard>
-      <div className="flex w-full justify-between px-2 pt-2">
+      <div className="flex justify-between w-full px-2 pt-2">
         <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
         <span className={cn('w-fit rounded-full border bg-background px-3 py-1 text-center text-sm', type)}>{type}</span>
 
-        <CardDropdownMenu />
+        <CardDropdownMenu>
+          <DropdownMenuItem>
+            <Link href={`/stacks/${id}?component=${id}`}>View connected stacks</Link>
+          </DropdownMenuItem>
+        </CardDropdownMenu>
       </div>
 
-      <div className="flex w-full flex-col gap-2 px-2">
-        <div className="flex w-full flex-col gap-1 p-2">
-          <h3 className="text-md mb-2 break-all font-bold">{name}</h3>
+      <div className="flex flex-col w-full gap-2 px-2">
+        <div className="flex flex-col w-full gap-1 p-2">
+          <h3 className="mb-2 font-bold break-all text-md">{name}</h3>
           <label className="text-sm">
             <span className="font-bold">ID: </span>
             {id}
