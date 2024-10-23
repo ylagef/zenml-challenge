@@ -16,8 +16,8 @@ interface StacksListProps {
 export default function StacksList({ stacks }: StacksListProps) {
   const searchParams = useSearchParams()
   const text = searchParams.get('text') || ''
-  const components = searchParams.get('component_type') || ''
-  const component = searchParams.get('component_id') || ''
+  const componentType = searchParams.get('component_type') || ''
+  const componentId = searchParams.get('component_id') || ''
   const sort = searchParams.get('sort') || ''
 
   const filteredStacks = useMemo(() => {
@@ -32,15 +32,15 @@ export default function StacksList({ stacks }: StacksListProps) {
         )
       })
       .filter((stack) => {
-        if (!components) return true
+        if (!componentType) return true
 
-        const componentFilters = components.split(',')
+        const componentFilters = componentType.split(',')
         return Object.values(stack.components).some(([type]) => componentFilters.includes(type))
       })
       .filter((stack) => {
-        if (!component) return true
+        if (!componentId) return true
 
-        return Object.values(stack.components).some(([id]) => id === component)
+        return Object.values(stack.components).some(([id]) => id === componentId)
       })
       .sort((a, b) => {
         switch (sort) {
@@ -52,16 +52,16 @@ export default function StacksList({ stacks }: StacksListProps) {
             return a.name.localeCompare(b.name)
         }
       })
-  }, [stacks, text, components, sort, component])
+  }, [stacks, text, componentType, sort, componentId])
 
   return (
-    <div className="flex flex-col w-full px-2 grow">
+    <div className="flex w-full grow flex-col px-2">
       <div className="sticky top-0 z-10 flex flex-col justify-between gap-1 py-2 backdrop-blur">
         <HeaderWithMenuButton />
         <FiltersBar />
       </div>
 
-      <div className="flex flex-wrap w-full gap-2 overflow-y-auto">
+      <div className="flex w-full flex-wrap gap-2 overflow-y-auto">
         {filteredStacks.map((stack) => (
           <StackCard key={stack.id} stack={stack} />
         ))}

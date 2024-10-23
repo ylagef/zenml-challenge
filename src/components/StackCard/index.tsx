@@ -28,11 +28,13 @@ export const StackCard = ({ stack, expanded }: StackCardProps) => {
         <Badge variant={is_shared ? 'default' : 'outline'}>{is_shared ? 'Shared' : 'Private'}</Badge>
 
         <CardDropdownMenu>
-          <DropdownMenuItem>
-            <Link href={`/stack-components/${id}?component_id=${[...mainComponents, ...otherComponents].map(([, [id]]) => id).join(',')}`}>
-              View components
-            </Link>
-          </DropdownMenuItem>
+          {!expanded && (
+            <DropdownMenuItem>
+              <Link href={`/stack-components/${id}?component_id=${[...mainComponents, ...otherComponents].map(([, [id]]) => id).join(',')}`}>
+                View components
+              </Link>
+            </DropdownMenuItem>
+          )}
         </CardDropdownMenu>
       </div>
 

@@ -26,9 +26,11 @@ export const StackComponentCard = ({ component, expanded }: StackComponentCardPr
         <Badge className={cn('border border-border bg-background text-foreground hover:bg-background/75', type)}>{type}</Badge>
 
         <CardDropdownMenu>
-          <DropdownMenuItem>
-            <Link href={`/stacks/${id}?component=${id}`}>View connected stacks</Link>
-          </DropdownMenuItem>
+          {!expanded && (
+            <DropdownMenuItem>
+              <Link href={`/stacks/${id}?component_id=${id}`}>View connected stacks</Link>
+            </DropdownMenuItem>
+          )}
         </CardDropdownMenu>
       </div>
 
