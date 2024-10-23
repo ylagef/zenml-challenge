@@ -15,7 +15,7 @@ export const ExpandableCode = ({ code, initialExpanded = false }: ExpandableCode
   const [expanded, setExpanded] = useState<boolean>(initialExpanded)
   const codeString = JSON.stringify(code, null, 2)
   const numberOfLines = codeString.split('\n').length
-  const maxExpandedHeight = `${2 * numberOfLines}rem`
+  const maxExpandedHeight = `${2 * (numberOfLines + 2)}rem`
 
   return (
     <span
