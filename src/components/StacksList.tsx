@@ -10,7 +10,7 @@ interface StacksListProps {
   stacks: Stack[]
 }
 
-export default async function StacksList({ stacks }: StacksListProps) {
+export default function StacksList({ stacks }: StacksListProps) {
   const searchParams = useSearchParams()
   const text = searchParams.get('text') || ''
   const components = searchParams.get('component') || ''
