@@ -14,7 +14,7 @@ interface StacksListProps {
 export default function StacksList({ stacks }: StacksListProps) {
   const searchParams = useSearchParams()
   const text = searchParams.get('text') || ''
-  const components = searchParams.get('component') || ''
+  const components = searchParams.get('component_type') || ''
   const sort = searchParams.get('sort') || ''
 
   const filteredStacks = useMemo(() => {

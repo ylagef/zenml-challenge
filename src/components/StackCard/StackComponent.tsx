@@ -14,11 +14,11 @@ export const StackComponent = ({ type, id }: StackComponentProps) => {
   const params = useParams()
   const pathName = usePathname()
   const currentSearchParams = useSearchParams()
-  const isStackPath = pathName.startsWith('stacks')
+  const isStackPath = pathName.startsWith('/stacks')
   const isNotSelected = isStackPath && params.id && params.id !== id
 
   const searchParams = new URLSearchParams(currentSearchParams.toString())
-  searchParams.set('component', id)
+  searchParams.set('component_id', id)
   const href = `/stacks/${id}?${searchParams.toString()}`
 
   return (
