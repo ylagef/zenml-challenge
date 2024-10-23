@@ -8,7 +8,7 @@ export default async function StacksLayout({ children }: PropsWithChildren) {
   console.log(stacks)
 
   return (
-    <div className="flex flex-col flex-1 gap-2 sm:flex-row">
+    <div className="flex flex-col flex-1 w-full gap-2 sm:flex-row">
       <StacksList stacks={stacks} />
 
       {children}
