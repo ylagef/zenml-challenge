@@ -1,12 +1,11 @@
 'use client'
 
-import { Stack } from '@/types/stack'
 import { useSearchParams } from 'next/navigation'
 import { Input } from './ui/input'
 
 import { useSearchParamFilter } from '@/hooks/useSearchParamFilter'
-import { SelectComponent } from './SelectComponent'
 import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
+import { SelectComponent } from './SelectComponent'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 
 export const FiltersBar = () => {
@@ -25,7 +24,7 @@ export const FiltersBar = () => {
       <SelectComponent
         placeholder="Component type"
         options={Object.values(STACK_COMPONENT_TYPE).map((value) => ({ value, label: value }))}
-        onChange={(e) => addFilter('component', e.map((s) => s.value).join(','))}
+        onChange={(e) => addFilter('component_type', e.map((s) => s.value).join(','))}
       />
 
       <Select onValueChange={(e) => addFilter('sort', e)}>
