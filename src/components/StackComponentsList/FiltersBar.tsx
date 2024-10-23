@@ -1,14 +1,14 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { Input } from './ui/input'
+import { Input } from '../ui/input'
 
 import { useSearchParamFilter } from '@/hooks/useSearchParamFilter'
 import { STACK_COMPONENT_TYPE } from '@/types/stack-component'
-import { SelectComponent } from './SelectComponent'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
+import { SelectComponent } from '../SelectComponent'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 
-export const FiltersBar = () => {
+export const FiltersBar = ({ flavors }: { flavors: string[] }) => {
   const searchParams = useSearchParams()
   const { addFilter } = useSearchParamFilter()
 
@@ -25,6 +25,12 @@ export const FiltersBar = () => {
         placeholder="Component type"
         options={Object.values(STACK_COMPONENT_TYPE).map((value) => ({ value, label: value }))}
         onChange={(e) => addFilter('component_type', e.map((s) => s.value).join(','))}
+      />
+
+      <SelectComponent
+        placeholder="Flavor"
+        options={flavors.map((value) => ({ value, label: value }))}
+        onChange={(e) => addFilter('flavor', e.map((s) => s.value).join(','))}
       />
 
       <Select onValueChange={(e) => addFilter('sort', e)}>

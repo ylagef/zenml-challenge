@@ -1,6 +1,6 @@
 'use client'
 
-import { FiltersBar } from '@/components/FiltersBar'
+import { FiltersBar } from './FiltersBar'
 import { HeaderWithMenuButton } from '@/components/HeaderWithMenuButton'
 import { StackComponentCard } from '@/components/StackComponentCard'
 import { StackComponent } from '@/types/stack-component'
@@ -17,6 +17,7 @@ export default function StackComponentsList({ stackComponents }: StackComponents
   const component_id = searchParams.get('component_id') || ''
   const sort = searchParams.get('sort') || ''
   const component_type = searchParams.get('component_type') || ''
+  const flavor = searchParams.get('flavor') || ''
 
   const filteredStackComponents = useMemo(() => {
     return stackComponents
@@ -41,6 +42,13 @@ export default function StackComponentsList({ stackComponents }: StackComponents
         }
         return true
       })
+      .filter((stackComponent) => {
+        if (flavor) {
+          const componentFilters = flavor.split(',')
+          return componentFilters.some((component) => stackComponent.flavor === component)
+        }
+        return true
+      })
       .sort((a, b) => {
         switch (sort) {
           case 'created':
@@ -51,13 +59,15 @@ export default function StackComponentsList({ stackComponents }: StackComponents
             return a.name.localeCompare(b.name)
         }
       })
-  }, [stackComponents, text, component_id, sort, component_type])
+  }, [stackComponents, text, component_id, sort, component_type, flavor])
+
+  const flavorsList = Array.from(new Set(stackComponents.map((stackComponent) => stackComponent.flavor))).sort((a, z) => a.localeCompare(z))
 
   return (
     <div className="flex flex-col flex-1 w-full px-2">
       <div className="sticky top-0 flex flex-col justify-between gap-1 py-2 backdrop-blur">
         <HeaderWithMenuButton />
-        <FiltersBar />
+        <FiltersBar flavors={flavorsList} />
       </div>
 
       <div className="flex flex-wrap w-full gap-2 overflow-y-auto">

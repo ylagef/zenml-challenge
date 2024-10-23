@@ -26,7 +26,7 @@ const animatedComponents = makeAnimated()
 export const SelectComponent = <T extends unknown>({ options, onChange, placeholder }: SelectComponentProps<T>) => {
   return (
     <Select
-      placeholder="Components"
+      placeholder={placeholder}
       onChange={onChange}
       components={animatedComponents}
       isMulti

@@ -1,10 +1,10 @@
 'use client'
 
-import { FiltersBar } from '@/components/FiltersBar'
+import { FiltersBar } from './FiltersBar'
 import { StackCard } from '@/components/StackCard'
 import { Stack } from '@/types/stack'
 import { useSearchParams } from 'next/navigation'
-import { HeaderWithMenuButton } from './HeaderWithMenuButton'
+import { HeaderWithMenuButton } from '../HeaderWithMenuButton'
 import { useMemo } from 'react'
 
 interface StacksListProps {
@@ -47,13 +47,13 @@ export default function StacksList({ stacks }: StacksListProps) {
   }, [stacks, text, components, sort])
 
   return (
-    <div className="flex flex-col w-full px-2 grow">
+    <div className="flex w-full grow flex-col px-2">
       <div className="sticky top-0 flex flex-col justify-between gap-1 py-2 backdrop-blur">
         <HeaderWithMenuButton />
         <FiltersBar />
       </div>
 
-      <div className="flex flex-wrap w-full gap-2 overflow-y-auto">
+      <div className="flex w-full flex-wrap gap-2 overflow-y-auto">
         {filteredStacks.map((stack) => (
           <StackCard key={stack.id} stack={stack} />
         ))}
