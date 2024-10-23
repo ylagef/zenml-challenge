@@ -29,10 +29,12 @@ export default async function StacksList({ stacks }: StacksListProps) {
   const filteredStacks = stacks
     .filter((stack) => {
       const regex = new RegExp(text, 'i')
-      return Object.values(stack).some((value) => {
-        if (typeof value === 'object') return false
-        return regex.test(value as string)
-      })
+      return (
+        Object.values(stack).some((value) => {
+          if (typeof value === 'object') return false
+          return regex.test(value as string)
+        }) || Object.values(stack.components).some((value) => regex.test(value[0]))
+      )
     })
     .filter((stack) => {
       if (components) {
