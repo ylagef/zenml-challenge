@@ -23,7 +23,7 @@ export const StackCard = ({ stack }: { stack: Stack }) => {
 
         <CardDropdownMenu>
           <DropdownMenuItem>
-            <Link href={`/stack-components?component_id=${[...mainComponents, ...otherComponents].map(([_, [id]]) => id).join(',')}`}>
+            <Link href={`/stack-components/${id}?component_id=${[...mainComponents, ...otherComponents].map(([_, [id]]) => id).join(',')}`}>
               View components
             </Link>
           </DropdownMenuItem>

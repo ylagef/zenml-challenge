@@ -7,11 +7,11 @@ import { Link } from 'next-view-transitions'
 import { useSearchParams } from 'next/navigation'
 import React from 'react'
 
-export const CloseDetailButton = ({ url, removeKey }: { url: string; removeKey: string }) => {
+export const CloseDetailButton = ({ url, removeKey }: { url: string; removeKey?: string }) => {
   const isMobile = useIsMobile()
   const currentSearchParams = useSearchParams()
   const searchParams = new URLSearchParams(currentSearchParams.toString())
-  searchParams.delete(removeKey)
+  if (removeKey) searchParams.delete(removeKey)
   const newUrl = `${url}?${searchParams.toString()}`
 
   return (
