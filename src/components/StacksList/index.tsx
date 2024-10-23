@@ -17,6 +17,7 @@ export default function StacksList({ stacks }: StacksListProps) {
   const searchParams = useSearchParams()
   const text = searchParams.get('text') || ''
   const components = searchParams.get('component_type') || ''
+  const component = searchParams.get('component_id') || ''
   const sort = searchParams.get('sort') || ''
 
   const filteredStacks = useMemo(() => {
@@ -36,6 +37,11 @@ export default function StacksList({ stacks }: StacksListProps) {
         const componentFilters = components.split(',')
         return Object.values(stack.components).some(([type]) => componentFilters.includes(type))
       })
+      .filter((stack) => {
+        if (!component) return true
+
+        return Object.values(stack.components).some(([id]) => id === component)
+      })
       .sort((a, b) => {
         switch (sort) {
           case 'created_at':
@@ -46,7 +52,7 @@ export default function StacksList({ stacks }: StacksListProps) {
             return a.name.localeCompare(b.name)
         }
       })
-  }, [stacks, text, components, sort])
+  }, [stacks, text, components, sort, component])
 
   return (
     <div className="flex flex-col w-full px-2 grow">
