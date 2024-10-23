@@ -21,12 +21,11 @@ export const Toggle = () => {
   }
 
   useEffect(() => {
-    console.log('theme', theme)
     if (!theme) return
     setSelectedTheme(theme as THEME)
   }, [theme])
 
-  if (!selectedTheme) return <Spinner className="aspect-square h-6" />
+  if (!selectedTheme) return <Spinner className="h-6 aspect-square" />
 
   return (
     <>
