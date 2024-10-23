@@ -25,7 +25,7 @@ export const ExpandableCode = ({ code, initialExpanded = false }: ExpandableCode
       <SyntaxHighlighter
         language="json"
         customStyle={{
-          backgroundColor: 'hsl(var(--sidebar-background))',
+          backgroundColor: 'hsl(var(--border))',
           color: 'var(--foreground)',
           fontSize: '0.9rem',
           borderRadius: '0.5rem',
