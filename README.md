@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ZenML Challenge
 
-## Getting Started
+This project uses Next.js 14 and aims to develop an application to solve the ZenML challenge.
 
-First, run the development server:
+## Installation
+
+Follow these steps to install the necessary dependencies and launch the application:
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- yarn
+
+### Unzip the ZIP File
+
+Download and unzip the `.zip` file containing the project.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Navigate to the project directory
+$ cd zenml-challenge
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use yarn to install the required dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Using yarn
+$ yarn install
+```
 
-## Learn More
+## Running the Project
 
-To learn more about Next.js, take a look at the following resources:
+You can run the project as a production build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Production Mode
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To build and run the application in production mode:
 
-## Deploy on Vercel
+```bash
+# Build the project
+$ yarn run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Start the server in production
+$ yarn start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Configuration
+
+You can define environment variables by creating a `.env.local` file in the root directory of the project. Make sure to set the `API_URL` variable for the application to work correctly.
+
+## Scripts
+
+- `build`: Builds the application for production.
+- `start`: Starts the server with the production build.
