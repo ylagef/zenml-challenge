@@ -1,6 +1,7 @@
 # ZenML Challenge
 
 This project uses Next.js 14 and aims to develop an application to solve the ZenML challenge.
+![zenml-challenge vercel app_ (5)](https://github.com/user-attachments/assets/ba18eadf-489f-41ce-829f-a3ed445ff46c)
 ![zenml-challenge vercel app_](https://github.com/user-attachments/assets/63386f2a-adf6-4d8d-a702-8ecfb3074494)
 ![zenml-challenge vercel app_ (1)](https://github.com/user-attachments/assets/fe4f1d6d-7a6e-4a95-a9b8-5f09dcd85484)
 ![zenml-challenge vercel app_stacks_f500a2e5-7501-4988-b579-177576bac6e5_component_id=f500a2e5-7501-4988-b579-177576bac6e5](https://github.com/user-attachments/assets/f8488f2c-73fd-4709-9edf-302a4244bf7a)
